@@ -1,0 +1,15 @@
+
+<ng-progress 
+[positionUsing]="'marginLeft'" 
+[speed]="200" 
+[showSpinner]="false" 
+[direction]="'rightToLeftIncreased'"
+[color]="'red'" 
+[trickleSpeed]="250" 
+[thick]="false" 
+[ease]="'linear'"
+></ng-progress>
+<app-navbar *ngIf="Authen"></app-navbar>
+<div class="container-fulid">
+    <router-outlet (activate)="onGetComponent($event)"></router-outlet>
+</div>

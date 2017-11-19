@@ -1,0 +1,33 @@
+.top-padding{
+    margin-top:150px; 
+}
+@media screen and (max-width:780px) {
+    .top-padding{
+        margin-top:50px; 
+    }
+}
+
+.logo{
+    margin:25px;
+}
+.fixd_botton{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0px;
+}
+canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0; 
+}
+.fixd_top{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 0px;
+}

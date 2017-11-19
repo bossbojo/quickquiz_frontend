@@ -1,0 +1,76 @@
+html,body,input,button{
+  font-family: 'Prompt', sans-serif;
+}
+.colorchange{
+  animation: colorchange 20s infinite alternate;
+  -webkit-animation: colorchange 20s infinite alternate;
+}
+@keyframes colorchange {
+  10% {
+    background: #5F9EA0;
+  }
+  20% {
+    background: #D2691E;
+  }
+  30% {
+    background:	#FF7F50;
+  }
+  40% {
+    background: #6495ED;
+  }
+  50% {
+    background: #DC143C;
+  }
+  60% {
+    background: #00008B;
+  }
+  70% {
+    background: #B8860B;
+  }
+  80% {
+    background: #006400;
+  }
+  90% {
+    background: #FF8C00;
+  }
+  100% {
+    background: #5F9EA0;
+  }
+}
+
+@-webkit-keyframes colorchange {
+  10% {
+    background: #5F9EA0;
+  }
+  20% {
+    background: #D2691E;
+  }
+  30% {
+    background:	#FF7F50;
+  }
+  40% {
+    background: #6495ED;
+  }
+  50% {
+    background: #DC143C;
+  }
+  60% {
+    background: #00008B;
+  }
+  70% {
+    background: #B8860B;
+  }
+  80% {
+    background: #006400;
+  }
+  90% {
+    background: #FF8C00;
+  }
+  100% {
+    background: #5F9EA0;
+  }
+}
+/*override bootstep class*/
+.btn{
+  cursor: pointer;
+}
