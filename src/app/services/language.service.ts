@@ -60,6 +60,6 @@ export class LanguageService {
 
 // set languages to LANGUAGES : เก็บค่าภาษาไว้ก่อน โดยดุึงจาก json file
 const LANGUAGES_VALIABLE = {
-    TH: require('../languages/th.json'),
-    KH: require('../languages/kh.json')
+    TH: require('../languages/th.json')
+  //  KH: require('../languages/kh.json')
 };

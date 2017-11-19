@@ -5,6 +5,7 @@ import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { AuthenticationService } from './authentication.service';
+import { baseUrl } from '../configs/url.config';
 
 @Injectable()
 export class HttpService {
@@ -41,13 +42,14 @@ export class HttpService {
         responseData.Message = responseData.data.Message ? responseData.data.Message : responseData.response.statusText;
         responseData.TempData = responseData.data.TempData ? responseData.data.TempData : null;
         responseData.Token = responseData.data.Token ? responseData.data.Token : null;
+        responseData.Detail = responseData.data.Detail ? responseData.data.Detail : null;
         return responseData;
     }
 
     // Process do data : จัดการข้อมูลกรณีมีข้อมูลการ authentication ออกมา
     onDoProcess(response: ResponseModel) {
         if (response.Token)
-            this.authenticated.setAuthenticated(response.Token);
+            this.authenticated.setAuthenticated(response.Token,response.Detail);
     }
 
     // Error handle : ส่ง error ออกไปเมื่อ server เกิดข้อผิดพลาด
@@ -80,7 +82,7 @@ export class HttpService {
 
     // Check domain is production or development : เช็คว่าที่อยู่เป็นอะไร ถ้าเรา build เป็น production หรือ development
 
-    private address: string = 'http://test.9t.com/api';
+    private address: string = baseUrl;
 
 
 }
@@ -93,5 +95,6 @@ export class ResponseModel {
     Message: string;
     TempData: string;
     Token: string;
+    Detail:any;
     response: Response;
 }

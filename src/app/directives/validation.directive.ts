@@ -31,7 +31,7 @@ export class ValidationDirective implements DoCheck, AfterViewInit {
         if (this.control.touched) {
             if (this.formInputelement.is(':focus')) return;
 
-            this.formGroupElement.removeClass('has-success has-error');
+            this.formGroupElement.removeClass('has-success hasw');
             const errorMessage = this.languageService.translage(this.getValidatorsMessage());
             const nodeName = this.formInputelement.prop('nodeName');
             if (this.control.valid) {

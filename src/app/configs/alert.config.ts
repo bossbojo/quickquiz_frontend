@@ -2,7 +2,7 @@ import { LanguageService } from '../services/language.service';
 const lang = new LanguageService();
 declare let $;
 
-export function alert(title: string, content: string = '') {
+export function jalert(title: string, content: string = '') {
     //var textok = this.LanguageService.translage('ok');
     return new Promise(resolve => {
         $.alert({
@@ -18,7 +18,7 @@ export function alert(title: string, content: string = '') {
     });
 }
 
-export function confirm(title: string, content: string = ''): Promise<boolean> {
+export function jconfirm(title: string, content: string = ''): Promise<boolean> {
     return new Promise(resolve => {
         $.confirm({
             title: title || 'Confirm!',
@@ -37,7 +37,7 @@ export function confirm(title: string, content: string = ''): Promise<boolean> {
     });
 }
 
-export function dialog(title: string, content: string = '') {
+export function jdialog(title: string, content: string = '') {
     $.dialog({
         title: title || 'Dialog!',
         content: content
