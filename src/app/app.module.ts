@@ -5,23 +5,34 @@ import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 import { BrowserXhr, HttpModule } from '@angular/http';
 import { RoutingModule } from './app.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRouteSnapshot } from '@angular/router';
 //Services
 import { LanguageService } from './services/language.service';
 import { HttpService } from './services/http.service';
 import { AuthenticationService } from './services/authentication.service';
-import { AuthenticationGuard } from './guards/authentication.guard';
-import { AllowAnonymousGuard } from './guards/allowAnonymous.guard';
+import { GlobalValueService } from './services/global-value.service';
 //Directive
 import { ValidationDirective } from './configs/validation.directive';
 import { LanguagePipe } from './pipes/language.pipe';
+//Guards
+import { AcceptAdminGuard } from './guards/AcceptAdmin.guard';
+import { AcceptStudentGuard } from './guards/AcceptStudent.guard';
+import { AcceptTeacherGuard } from './guards/AcceptTeacher.guard';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { AllowAnonymousGuard } from './guards/allowAnonymous.guard';
 //Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+//page
+import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
-import { HomeTeacherComponent } from './pages/home-teacher/home-teacher.component';
-import { HomeStudentComponent } from './pages/home-student/home-student.component';
-
+import { HomeAdminComponent } from './pages/admin/home-admin.component';
+import { HomeTeacherComponent } from './pages/teacher/home-teacher.component';
+import { HomeStudentComponent } from './pages/student/home-student.component';
+import { AdminLogUsersComponent } from './pages/admin-log-users/admin-log-users.component';
+import { AdminBinPageComponent } from './pages/admin-bin-page/admin-bin-page.component';
+import { ModalAddUserComponent } from './components/modal-add-user/modal-add-user.component';
 
 
 
@@ -38,7 +49,12 @@ import { HomeStudentComponent } from './pages/home-student/home-student.componen
     LoginComponent,
     HomeAdminComponent,
     HomeTeacherComponent,
-    HomeStudentComponent
+    HomeStudentComponent,
+    SidebarComponent,
+    AdminUsersPageComponent,
+    AdminLogUsersComponent,
+    AdminBinPageComponent,
+    ModalAddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -49,12 +65,17 @@ import { HomeStudentComponent } from './pages/home-student/home-student.componen
     FormsModule
   ],
   providers: [
+    GlobalValueService,
     AuthenticationService,
     HttpService,
     LanguageService,
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr },
+    //Guard
+    AcceptAdminGuard,
+    AcceptStudentGuard,
+    AcceptTeacherGuard,
     AuthenticationGuard,
-    AllowAnonymousGuard,
-    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
+    AllowAnonymousGuard
   ],
   bootstrap: [AppComponent]
 })

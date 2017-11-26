@@ -8,6 +8,7 @@ import { HttpService } from '../../services/http.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { UrlConfig } from '../../configs/url.config';
+import { GlobalValueService } from '../../services/global-value.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   FromLogin:FormGroup;
   BtnThai;
   BtnEng;
-  constructor(private build:FormBuilder,private langService:LanguageService ,private http:HttpService,private Authen:AuthenticationService,private route:Router) {
+  constructor(private build:FormBuilder,private langService:LanguageService ,private http:HttpService,private Authen:AuthenticationService,private route:Router,private global:GlobalValueService) {
 
     this.FromLogin = this.build.group({
       username: ['', [Validators.required]],
@@ -31,6 +32,8 @@ export class LoginComponent implements OnInit {
     this.ActiveCheckLang('TH');
   }
   OnSubmit(){
+    this.global.OnShowLoading();
+    this.global.OnChangeTextLoading('Wait for login...');
     if(this.FromLogin.valid){
       let RequestLogin = new m_Login(this.FromLogin.controls['username'].value,this.FromLogin.controls['password'].value);
       this.http.requestPost('signin',RequestLogin).subscribe((res)=>{
@@ -43,10 +46,15 @@ export class LoginComponent implements OnInit {
               }else{
                 this.route.navigate(['/',this.Url.HomeTeacher]);
               }
+              this.global.OnHiddenLoading();
+          }else{
+            jalert('Login warning',res.data)
+            this.global.OnHiddenLoading();
           }
       });
     }else{
       jalert('Login warning','Please check your input.')
+      this.global.OnHiddenLoading();
     }   
   }
   OnchangeLang(lang){
@@ -62,6 +70,5 @@ export class LoginComponent implements OnInit {
       this.BtnThai = '';
       this.BtnEng = 'btn-info';
     }
-
   }
 }

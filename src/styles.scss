@@ -3,16 +3,25 @@ $error-color: #EF5350;
 $success-color: #66BB6A;
 $placeholder-color: #AAAAAA;
 $main-color: #7ACDCF;
-
-html,body,input,button{
+html,
+body,
+input,
+button {
   font-family: 'Kanit', sans-serif;
 }
-.colorchange{
+
+.colorchange {
   animation: colorchange 20s infinite alternate;
   -webkit-animation: colorchange 20s infinite alternate;
 }
-i{ vertical-align: middle !important; }
+
+i {
+  vertical-align: middle !important;
+}
+
+
 /*#region color change bg*/
+
 @keyframes colorchange {
   10% {
     background: #5F9EA0;
@@ -21,7 +30,7 @@ i{ vertical-align: middle !important; }
     background: #D2691E;
   }
   30% {
-    background:	#FF7F50;
+    background: #FF7F50;
   }
   40% {
     background: #6495ED;
@@ -54,7 +63,7 @@ i{ vertical-align: middle !important; }
     background: #D2691E;
   }
   30% {
-    background:	#FF7F50;
+    background: #FF7F50;
   }
   40% {
     background: #6495ED;
@@ -78,10 +87,12 @@ i{ vertical-align: middle !important; }
     background: #5F9EA0;
   }
 }
+
+
 /*#endregion color change bg*/
 
- // For form control
- .form-control {
+// For form control
+.form-control {
   height: 40px;
   background-color: #F5F5F3;
   border: solid 1px #F5F5F3;
@@ -90,24 +101,24 @@ i{ vertical-align: middle !important; }
   font-weight: 400;
   color: $main-text-color;
   &::-webkit-input-placeholder {
-      /* Chrome/Opera/Safari */
-      color: $placeholder-color;
-      font-weight: 300;
+    /* Chrome/Opera/Safari */
+    color: $placeholder-color;
+    font-weight: 300;
   }
   &::-moz-placeholder {
-      /* Firefox 19+ */
-      color: $placeholder-color;
-      font-weight: 300;
+    /* Firefox 19+ */
+    color: $placeholder-color;
+    font-weight: 300;
   }
   &:-ms-input-placeholder {
-      /* IE 10+ */
-      color: $placeholder-color;
-      font-weight: 300;
+    /* IE 10+ */
+    color: $placeholder-color;
+    font-weight: 300;
   }
   &:-moz-placeholder {
-      /* Firefox 18- */
-      color: $placeholder-color;
-      font-weight: 300;
+    /* Firefox 18- */
+    color: $placeholder-color;
+    font-weight: 300;
   }
 }
 
@@ -115,82 +126,270 @@ i{ vertical-align: middle !important; }
 @mixin ValidationFunction($setColor) {
   position: relative;
   .material-icons {
-      position: absolute;
-      top: 11px;
-      right: 7px;
-      color: $setColor;
-      font-size: 19px;
+    position: absolute;
+    top: 11px;
+    right: 7px;
+    color: $setColor;
+    font-size: 19px;
   }
   validation {
-      color: $setColor;
-      display: block;
-      text-align: right;
-      font-size: 12px;
-      font-weight: 400;
-      margin-top: 5px;
+    color: $setColor;
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
   }
 }
 
 .form-group {
   .form-control {
-      border: solid 1px #F5F5F3;
-      box-shadow: none;
+    border: solid 1px #F5F5F3;
+    box-shadow: none;
   }
   .form-control:focus {
-      border: solid 1px #7ACDCF;
-      box-shadow: none;
+    border: solid 1px #7ACDCF;
+    box-shadow: none;
   }
   validation {
-      display: none;
+    display: none;
   }
   &.has-error {
-      .form-control {
-          border-color: $error-color;
-          color: $error-color;
-          &::-webkit-input-placeholder {
-              /* Chrome/Opera/Safari */
-              color: $error-color;
-              font-weight: 300;
-          }
-          &::-moz-placeholder {
-              /* Firefox 19+ */
-              color: $error-color;
-              font-weight: 300;
-          }
-          &:-ms-input-placeholder {
-              /* IE 10+ */
-              color: $error-color;
-              font-weight: 300;
-          }
-          &:-moz-placeholder {
-              /* Firefox 18- */
-              color: $error-color;
-              font-weight: 300;
-          }
+    .form-control {
+      border-color: $error-color;
+      color: $error-color;
+      &::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: $error-color;
+        font-weight: 300;
       }
-      @include ValidationFunction($error-color);
+      &::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $error-color;
+        font-weight: 300;
+      }
+      &:-ms-input-placeholder {
+        /* IE 10+ */
+        color: $error-color;
+        font-weight: 300;
+      }
+      &:-moz-placeholder {
+        /* Firefox 18- */
+        color: $error-color;
+        font-weight: 300;
+      }
+    }
+    @include ValidationFunction($error-color);
   }
   &.has-success {
-      @include ValidationFunction($success-color);
+    @include ValidationFunction($success-color);
   }
   &.has-none {
-      border-color: #F5F5F3;
+    border-color: #F5F5F3;
   }
 }
 
 select.form-control {
   &,
   &:focus {
-      color: #AAAAAA;
-      font-weight: 300;
-      box-shadow: none !important;
+    color: #AAAAAA;
+    font-weight: 300;
+    box-shadow: none !important;
   }
   &[has-value="true"] {
-      color: $main-text-color;
-      font-weight: 400;
+    color: $main-text-color;
+    font-weight: 400;
   }
 }
+
+
 /*override bootstep class*/
-.btn{
+
+.btn {
   cursor: pointer;
+}
+
+table {
+  width: 100%;
+  thead {
+    color: #ffffff;
+    background-color: #0d083b;
+    th {
+      font-size: 16px;
+      padding: 15px;
+    }
+  }
+  tbody {
+    tr {
+      td {
+        padding: 10px;
+      }
+    }
+    tr:hover {
+      transition: all 0.2s;
+      background-color: #dbdbdb;
+    }
+  }
+}
+
+.row {
+  margin-top: 8px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.panel {
+  box-shadow: 0px 0px 5px #909090;
+}
+
+.panel-body {
+  padding: 5px;
+}
+
+.moblie-desktop-hidden {
+  display: none;
+}
+
+@media screen and (max-width:748px) {
+  .moblie-table-hidden {
+    display: none;
+  }
+  .moblie-desktop-hidden {
+    display: block;
+  }
+}
+
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.action-icon {
+  font-size: 15px !important;
+}
+
+.modal-header-success {
+  font-size: 20px;
+  color: #fff;
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #5cb85c;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-header-warning {
+  font-size: 20px;
+  color: #fff;
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #f0ad4e;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-header-danger {
+  font-size: 20px;
+  color: #fff;
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #d9534f;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-header-info {
+  font-size: 20px;
+  color: #fff;
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #5bc0de;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-header-primary {
+  font-size: 20px;
+  color: #fff;
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #428bca;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.close{
+  background-color: #aaa !important;
+  border-radius: 17px !important;
+  padding: 0px 9px 3px 9px !important;
+  font-size: 25px !important;
+  transition: all 0.2s !important;
 }

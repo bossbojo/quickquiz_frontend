@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-12">
+    <ng-container *ngIf="OpenAddUser">
+      <app-modal-add-user [(modal)]="OpenAddUser"></app-modal-add-user>
+    </ng-container>
+    <button class="btn btn-primary btn-sm" (click)="OnOpenModalAdduser()">
+      <i class="material-icons">add_circle_outline</i> {{ 'Add user' | lang }}
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-right">
+    <form>
+      <div class="col-md-2 col-md-offset-10">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username search...">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table-desktop">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Firstname</th>
+              <th class="moblie-table-hidden">Lastname</th>
+              <th class="moblie-table-hidden">Faculty</th>
+              <th class="moblie-table-hidden">Branch </th>
+              <th class="moblie-table-hidden">Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5611405545</td>
+              <td>paramat</td>
+              <td class="moblie-table-hidden">singkon</td>
+              <td class="moblie-table-hidden">science</td>
+              <td class="moblie-table-hidden">computer science</td>
+              <td class="moblie-table-hidden">student</td>
+              <td class="col-action">
+                <div class="moblie-table-hidden">
+                  <button class="btn btn-info btn-sm">
+                    <i class="material-icons action-icon">info</i> {{ 'Show' | lang }}
+                  </button>
+                  <button class="btn btn-success btn-sm">
+                    <i class="material-icons action-icon">mode_edit</i> {{ 'Edit' | lang }}
+                  </button>
+                  <button class="btn btn-warning btn-sm">
+                    <i class="material-icons action-icon">block</i> {{ 'Block' | lang }}
+                  </button>
+                  <button class="btn btn-danger btn-sm">
+                    <i class="material-icons action-icon">clear</i> {{ 'Remove' | lang }}
+                  </button>
+                </div>
+                <div class="moblie-desktop-hidden">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown">
+                      <i class="material-icons">settings_applications</i>
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#">
+                          <i class="material-icons action-icon">info</i> {{ 'Show' | lang }}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="material-icons action-icon">mode_edit</i> {{ 'Edit' | lang }}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="material-icons action-icon">block</i> {{ 'Block' | lang }}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="material-icons action-icon">clear</i> {{ 'Remove' | lang }}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

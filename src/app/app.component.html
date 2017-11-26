@@ -3,13 +3,20 @@
 [positionUsing]="'marginLeft'" 
 [speed]="200" 
 [showSpinner]="false" 
-[direction]="'rightToLeftIncreased'"
-[color]="'red'" 
+[direction]="'leftToRightIncreased'"
+[color]="'green'" 
 [trickleSpeed]="250" 
 [thick]="false" 
 [ease]="'linear'"
 ></ng-progress>
+<div class="loading">
+    <div class="col-md-12 center">
+          <img src="assets\img\Rolling.gif" alt="">
+          <h3 id="TextLoading">Loading...</h3>
+    </div>
+</div>
 <app-navbar *ngIf="NavberAdmin"></app-navbar>
-<div class="container-fulid">
+<app-sidebar></app-sidebar>
+<div class="container-fulid" (click)="OnHiddenSidebar()">
     <router-outlet (activate)="onGetComponent($event)"></router-outlet>
 </div>

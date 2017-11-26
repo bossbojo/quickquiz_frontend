@@ -4,15 +4,14 @@ import { HttpService, ResponseModel } from '../services/http.service';
 import { Injectable } from '@angular/core';
 import { UrlConfig } from '../configs/url.config';
 import { AuthenticationService } from '../services/authentication.service';
-import { loadingPage } from '../configs/alert.config';
+import { GlobalValueService } from '../services/global-value.service';
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
-    constructor(private http: HttpService, private router: Router, private authService: AuthenticationService) { }
+    constructor(private http: HttpService, private router: Router, private authService: AuthenticationService,private global:GlobalValueService) { }
     canActivate(route, state): boolean | Observable<boolean> {
         // check authorizeation request from server
-        loadingPage(true);
         return <Observable<any>>this.http.requestGet('Authentication')
-            .finally(() => setTimeout(() => loadingPage(false), 1500))
+            .finally(() => setTimeout(() => this.global.OnHiddenLoading(), 1500))
             .map(res => this.destroyAuthenticated(res.data))
             .catch(res => this.destroyAuthenticatedCatch(res));
     }
@@ -21,7 +20,7 @@ export class AuthenticationGuard implements CanActivate {
         this.authService.destroyAuthenticated();
         this.router.navigate(['/', UrlConfig.Login]);
         // location.reload();
-        loadingPage(false);
+        this.global.OnHiddenLoading();
         return Observable.of(res);
     }
 
@@ -31,7 +30,7 @@ export class AuthenticationGuard implements CanActivate {
             // location.reload();
             this.router.navigate(['/', UrlConfig.Login]);
         }
-        loadingPage(false);
+        this.global.OnHiddenLoading();
         return res.Token.trim() != '';
     }
 
