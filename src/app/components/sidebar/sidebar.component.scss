@@ -1,0 +1,33 @@
+.sidebar{
+    position: absolute;
+    color:#ffffff;
+    top: 60px;
+    left: 0px;
+    background-color: #041d37;
+    height: 100%;
+    width: 300px;
+    box-shadow: 2px 5px 5px #000000;
+    transition: all 0.5s;
+    z-index: 5;
+}
+.sidebar-hidden{
+    left: -310px;
+    transition: all 0.2s;
+}
+.Menu{
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.Menu:hover{
+    transition: all 0.5s;
+    background-color: #133253;
+}
+.Menu-active{
+    background-color: #133253;
+}
+.Menu-sub{
+    font-size:18px; 
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

@@ -1,17 +1,18 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-primary ">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" ro>
-      <img src="assets\img\unnamed.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      QuickQuiz
-  </a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="header-project">
+        <img src="assets\img\unnamed.png" width="35" height="35" class="logo" [routerLink]="['/',Url.Login]">
+        <span [routerLink]="['/',Url.Login]" class="title-bar logo">QuickQuiz</span>
+        <a class="btn-sideber" id="OpenSide" (click)="ToggleSidebar()"><i class="material-icons">menu</i></a>
+        <a class="btn-sideber" id="OpenClose" (click)="ToggleSidebar()"><i class="material-icons">clear</i></a>
+      </div>
+      <div class="header-project-right">
+          <label (click)="OnchangeLang()"><i class="material-icons">g_translate</i> <span class="span-lang">{{ Lang }}</span></label> |
+          <label *ngIf="UserType == 1"><i class="material-icons sd-hidden">label</i> {{ 'Admin' | lang }}</label> 
+          <label *ngIf="UserType == 3"><i class="material-icons sd-hidden">label</i> {{ 'Teacher' | lang}}</label> 
+          | <a (click)="Onlogout()"><i class="material-icons sd-hidden">lock_open</i> {{ 'Log Out' | lang }}</a>
+        </div>
+    </div>
   </div>
 </nav>

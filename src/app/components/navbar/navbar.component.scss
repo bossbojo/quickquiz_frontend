@@ -1,0 +1,85 @@
+.navbar-brand {
+  padding: 8px;
+}
+
+.navbar-inverse {
+  background-color: #c4ced9;
+  border:none;
+}
+
+.navbar {
+  border-radius: 0px;
+  box-shadow: 0px 0px 8px #909090;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.header-project {
+  position: relative;
+  width: 200px;
+  background-color: #383276;
+  padding: 12px;
+}
+
+.header-project-right {
+  position: absolute;
+  text-align: right;
+  top: 16px;
+  right: 20px;
+}
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.btn-sideber {
+  color: #ffffff;
+  position: absolute;
+  top: 17px;
+  right: 10px;
+}
+
+.title-bar {
+  color: #fff;
+  font-size: 20px;
+  padding: 6px;
+}
+
+.container-fluid>.navbar-collapse,
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container>.navbar-header {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.span-lang {
+  cursor: pointer;
+  padding: 0px 5px 0px 5px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #25705a;
+}
+
+@media screen and (max-width:505px) {
+  .title-bar {
+    display: none;
+  }
+  .header-project {
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 505px) {
+  .sd-hidden{
+      display: none;
+  }
+}
+.logo{
+  cursor: pointer;
+}

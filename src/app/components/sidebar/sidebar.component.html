@@ -1,0 +1,29 @@
+<div class="sidebar" id="sidebar-main">
+  <!-- Admin  -->
+  <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminUsers]" (click)="ActiveBtn()">
+      <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users' | lang }}</div>  
+  </div>
+  <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminLogUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminLogUsers]" (click)="ActiveBtn()">
+      <div class="Menu-sub"><i class="material-icons">description</i> {{ 'Log Users'| lang}}</div>  
+  </div>
+  <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminBin?'Menu-active':'']" [routerLink]="['/',Url.AdminBin]" (click)="ActiveBtn()">
+    <div class="Menu-sub"><i class="material-icons">delete</i> {{ 'Bin'| lang}}</div>  
+</div>
+  <!-- Teacher -->
+  <div *ngIf="UserType == 3" class="Menu">
+      <div class="Menu-sub">menu1</div>  
+  </div>
+  <div *ngIf="UserType == 3" class="Menu">
+      <div class="Menu-sub">menu1</div>  
+  </div>
+  <div *ngIf="UserType == 3" class="Menu">
+      <div class="Menu-sub">menu1</div>  
+  </div>
+  <div *ngIf="UserType == 3" class="Menu">
+      <div class="Menu-sub">menu1</div>  
+  </div>
+  <!-- logout -->
+  <div class="Menu">
+      <div class="Menu-sub" (click)="Onlogout()"><i class="material-icons">lock_open</i> {{ 'Log Out'|lang}}</div>  
+  </div>
+</div>
