@@ -1,55 +1,73 @@
 <div class="row">
     <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <table class="table-desktop">
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Firstname</th>
-                <th class="moblie-table-hidden">Lastname</th>
-                <th class="moblie-table-hidden">Faculty</th>
-                <th class="moblie-table-hidden">Branch </th>
-                <th class="moblie-table-hidden">Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>5611405545</td>
-                <td>paramat</td>
-                <td class="moblie-table-hidden">singkon</td>
-                <td class="moblie-table-hidden">science</td>
-                <td class="moblie-table-hidden">computer science</td>
-                <td class="moblie-table-hidden">student</td>
-                <td class="col-action">
-                  <div class="moblie-table-hidden">
-                    <button class="btn btn-info btn-sm">
-                        <i class="material-icons">restore</i> {{ 'Recover' | lang }}
-                    </button>
-                  </div>
-                  <div class="moblie-desktop-hidden">
-                    <div class="dropdown">
-                      <a class="btn dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons">settings_applications</i>
-                        <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a href="#">
-                              <i class="material-icons">restore</i> {{ 'Recover' | lang }}
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <hr>
+      <button class="btn btn-info" (click)="OnRecoveryAll()">
+          <i class="material-icons">restore</i> {{ 'Recover all' | lang }}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <form>
+        <div class="col-md-2 col-md-offset-10">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username search...">
+          </div>
         </div>
+      </form>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table-desktop">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>Firstname</th>
+              <th class="moblie-table-hidden">Lastname</th>
+              <th class="moblie-table-hidden">User type</th>
+              <th class="moblie-table-hidden">Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let UserAllDataRemoves of UserAllDataRemove">
+              <td>{{ UserAllDataRemoves.user_id }}</td>
+              <td>{{ UserAllDataRemoves.Username }}</td>
+              <td>{{ UserAllDataRemoves.Firstname == null?'Wait verify':UserAllDataRemoves.Firstname }}</td>
+              <td class="moblie-table-hidden">{{ UserAllDataRemoves.Lastname == null?'Wait verify':UserAllDataRemoves.Lastname }}</td>
+              <td class="moblie-table-hidden">{{ UserAllDataRemoves.UserType }}</td>
+              <td class="moblie-table-hidden">{{ UserAllDataRemoves.Status }}</td>
+              <!-- bottom action -->
+              <td class="col-action">
+                <div class="moblie-table-hidden">
+                  <button class="btn btn-info btn-sm" (click)="OnRecovery(UserAllDataRemoves.user_id)">
+                    <i class="material-icons action-icon">restore</i> {{ 'Recover' | lang }}
+                  </button>
+                </div>
+                <div class="moblie-desktop-hidden">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown">
+                      <i class="material-icons">settings_applications</i>
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a  (click)="OnRecovery(UserAllDataRemoves.user_id)">
+                          <i class="material-icons">restore</i> {{ 'Recover' | lang }}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
       </div>
     </div>
   </div>
-  
+</div>

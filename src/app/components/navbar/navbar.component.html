@@ -8,7 +8,7 @@
         <a class="btn-sideber" id="OpenClose" (click)="ToggleSidebar()"><i class="material-icons">clear</i></a>
       </div>
       <div class="header-project-right">
-          <label (click)="OnchangeLang()"><i class="material-icons">g_translate</i> <span class="span-lang">{{ Lang }}</span></label> |
+          <label (click)="OnchangeLang()"><i class="material-icons">g_translate</i> <span class="span-lang">{{ Lang |lang }}</span></label> |
           <label *ngIf="UserType == 1"><i class="material-icons sd-hidden">label</i> {{ 'Admin' | lang }}</label> 
           <label *ngIf="UserType == 3"><i class="material-icons sd-hidden">label</i> {{ 'Teacher' | lang}}</label> 
           | <a (click)="Onlogout()"><i class="material-icons sd-hidden">lock_open</i> {{ 'Log Out' | lang }}</a>

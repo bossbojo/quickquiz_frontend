@@ -33,6 +33,7 @@ import { HomeStudentComponent } from './pages/student/home-student.component';
 import { AdminLogUsersComponent } from './pages/admin-log-users/admin-log-users.component';
 import { AdminBinPageComponent } from './pages/admin-bin-page/admin-bin-page.component';
 import { ModalAddUserComponent } from './components/modal-add-user/modal-add-user.component';
+import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 
 
 
@@ -54,7 +55,8 @@ import { ModalAddUserComponent } from './components/modal-add-user/modal-add-use
     AdminUsersPageComponent,
     AdminLogUsersComponent,
     AdminBinPageComponent,
-    ModalAddUserComponent
+    ModalAddUserComponent,
+    VerifyUserComponent
   ],
   imports: [
     BrowserModule,

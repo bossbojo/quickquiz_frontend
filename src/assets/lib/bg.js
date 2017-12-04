@@ -1,6 +1,7 @@
 
     var canvasDots = function() {
         var canvas = document.querySelector('canvas');
+        //var canvas = document.getElementsByClassName('connecting-dots');
         if(canvas){
             var   ctx = canvas.getContext('2d'),
             colorDot = '#CECECE',

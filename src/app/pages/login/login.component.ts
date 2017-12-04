@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { m_Login } from '../../model/m_Login';
-import { jalert } from '../../configs/alert.config';
+import { jalert, jconfirm } from '../../configs/alert.config';
 import { LanguageService } from '../../services/language.service';
 import { StorageConfog } from '../../configs/storage.config';
 import { HttpService } from '../../services/http.service';
@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   FromLogin:FormGroup;
   BtnThai;
   BtnEng;
+  Username;
   constructor(private build:FormBuilder,private langService:LanguageService ,private http:HttpService,private Authen:AuthenticationService,private route:Router,private global:GlobalValueService) {
 
     this.FromLogin = this.build.group({
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.ActiveCheckLang('TH');
+    this.global.OnHiddenLoading();
   }
   OnSubmit(){
     this.global.OnShowLoading();
@@ -48,9 +50,27 @@ export class LoginComponent implements OnInit {
               }
               this.global.OnHiddenLoading();
           }else{
-            jalert('Login warning',res.data)
+            if(res.data == 'Not Verify'){
+              jconfirm('Warning','This account not verify. You want verify?').then((res)=>{
+                if(!res){
+                  this.global.OnHiddenLoading();
+                  return;
+                }
+                this.Username = null;
+                setTimeout(() => {
+                  this.Username = this.FromLogin.controls['username'].value;
+                }, 100);
+                this.global.OnHiddenLoading();
+                return;
+              });
+              return;
+            }
+            jalert('Login warning',res.data); 
             this.global.OnHiddenLoading();
           }
+      },(err)=>{
+        jalert('Error',err.status +' : '+err.statusText)
+        this.global.OnHiddenLoading();
       });
     }else{
       jalert('Login warning','Please check your input.')

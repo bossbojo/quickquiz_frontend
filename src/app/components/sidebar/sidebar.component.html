@@ -1,4 +1,4 @@
-<div class="sidebar" id="sidebar-main">
+<div class="sidebar" id="sidebar-main" *ngIf="UserType">
   <!-- Admin  -->
   <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminUsers]" (click)="ActiveBtn()">
       <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users' | lang }}</div>  

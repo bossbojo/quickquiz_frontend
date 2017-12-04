@@ -5,9 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --aot=false -prod --deploy-url \"Frontend\"",
     "test": "ng test",
     "lint": "ng lint",
+    "deploy": "ng build -aot=false --deploy-url \"Frontend\" --output-path \"C:\\Users\\Paramat\\Documents\\Visual Studio 2017\\Projects\\Quickquiz.webAPI\\Quickquiz.webAPI\\Frontend\"",
+    "deploy:real": "npm run build&&deploy.bat",
     "e2e": "ng e2e"
   },
   "private": true,

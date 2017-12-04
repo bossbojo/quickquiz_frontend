@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { StorageConfog } from '../../configs/storage.config';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UrlConfig } from '../../configs/url.config';
@@ -11,12 +11,12 @@ import { GlobalValueService } from '../../services/global-value.service';
 })
 export class SidebarComponent implements OnInit {
   Url = UrlConfig;
-  UserType: number;
+  UserType;
   constructor(private auth: AuthenticationService,private global:GlobalValueService) {
-    this.UserType = StorageConfog.getItem('usertype');
+    
    }
-
   ngOnInit() {
+    this.UserType = StorageConfog.getItem('usertype');
   }
   Onlogout() {
     this.auth.logout();

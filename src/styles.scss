@@ -127,7 +127,7 @@ i {
   position: relative;
   .material-icons {
     position: absolute;
-    top: 11px;
+    top: 35px;
     right: 7px;
     color: $setColor;
     font-size: 19px;
@@ -227,7 +227,7 @@ table {
     }
     tr:hover {
       transition: all 0.2s;
-      background-color: #dbdbdb;
+      background-color: #f2f2f2;
     }
   }
 }

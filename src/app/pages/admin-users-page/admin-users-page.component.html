@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <ng-container *ngIf="OpenAddUser">
-      <app-modal-add-user [(modal)]="OpenAddUser"></app-modal-add-user>
+      <app-modal-add-user [(modal)]="OpenAddUser" (Refresh)="OnRefresh($event)"></app-modal-add-user>
     </ng-container>
     <button class="btn btn-primary btn-sm" (click)="OnOpenModalAdduser()">
       <i class="material-icons">add_circle_outline</i> {{ 'Add user' | lang }}
@@ -26,35 +26,38 @@
         <table class="table-desktop">
           <thead>
             <tr>
+              <th>#</th>
               <th>Username</th>
               <th>Firstname</th>
               <th class="moblie-table-hidden">Lastname</th>
-              <th class="moblie-table-hidden">Faculty</th>
-              <th class="moblie-table-hidden">Branch </th>
+              <th class="moblie-table-hidden">Verify</th>
+              <th class="moblie-table-hidden">User type</th>
               <th class="moblie-table-hidden">Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>5611405545</td>
-              <td>paramat</td>
-              <td class="moblie-table-hidden">singkon</td>
-              <td class="moblie-table-hidden">science</td>
-              <td class="moblie-table-hidden">computer science</td>
-              <td class="moblie-table-hidden">student</td>
+            <tr *ngFor="let UserAllDatas of UserAllData">
+              <td>{{ UserAllDatas.user_id }}</td>
+              <td>{{ UserAllDatas.Username }}</td>
+              <td>{{ UserAllDatas.Firstname == null?'Wait verify':UserAllDatas.Firstname  }}</td>
+              <td class="moblie-table-hidden">{{ UserAllDatas.Lastname == null?'Wait verify':UserAllDatas.Lastname }}</td>
+              <td class="moblie-table-hidden">{{ UserAllDatas.Verify }}</td>
+              <td class="moblie-table-hidden">{{ UserAllDatas.UserType }}</td>
+              <td class="moblie-table-hidden">{{ UserAllDatas.Status }}</td>
               <td class="col-action">
                 <div class="moblie-table-hidden">
-                  <button class="btn btn-info btn-sm">
+                  <button class="btn btn-info btn-sm" *ngIf="UserAllDatas.Verify" (click)="OnShow(UserAllDatas.Username,UserAllDatas.user_id)">
                     <i class="material-icons action-icon">info</i> {{ 'Show' | lang }}
                   </button>
-                  <button class="btn btn-success btn-sm">
-                    <i class="material-icons action-icon">mode_edit</i> {{ 'Edit' | lang }}
+                  <button class="btn btn-sm" *ngIf="UserAllDatas.Verify" (click)="OnReset(UserAllDatas.Username,UserAllDatas.user_id)" >
+                    <i class="material-icons action-icon">replay</i> {{ 'Reset' | lang }}
                   </button>
-                  <button class="btn btn-warning btn-sm">
-                    <i class="material-icons action-icon">block</i> {{ 'Block' | lang }}
+                  <button class="btn btn-warning btn-sm" *ngIf="UserAllDatas.Verify" 
+                  (click)="OnBlock(UserAllDatas.Username,UserAllDatas.user_id,UserAllDatas.Status=='block'? 0:1)" >
+                    <i class="material-icons action-icon">block</i> {{ UserAllDatas.Status=='block'? 'Unblock':'Block' | lang }}
                   </button>
-                  <button class="btn btn-danger btn-sm">
+                  <button class="btn btn-danger btn-sm" (click)="OnRemove(UserAllDatas.Username,UserAllDatas.user_id)" >
                     <i class="material-icons action-icon">clear</i> {{ 'Remove' | lang }}
                   </button>
                 </div>
@@ -66,22 +69,22 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#">
+                        <a (click)="OnShow(UserAllDatas.Username,UserAllDatas.user_id)" *ngIf="UserAllDatas.Verify">
                           <i class="material-icons action-icon">info</i> {{ 'Show' | lang }}
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i class="material-icons action-icon">mode_edit</i> {{ 'Edit' | lang }}
+                        <a (click)="OnReset(UserAllDatas.Username,UserAllDatas.user_id)" *ngIf="UserAllDatas.Verify">
+                          <i class="material-icons action-icon">replay</i> {{ 'Reset' | lang }}
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i class="material-icons action-icon">block</i> {{ 'Block' | lang }}
+                        <a (click)="OnBlock(UserAllDatas.Username,UserAllDatas.user_id,UserAllDatas.Status=='block'? 0:1)" *ngIf="UserAllDatas.Verify">
+                          <i class="material-icons action-icon">block</i> {{ UserAllDatas.Status=='block'? 'Unblock':'Block' | lang }}
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a (click)="OnRemove(UserAllDatas.Username,UserAllDatas.user_id)">
                           <i class="material-icons action-icon">clear</i> {{ 'Remove' | lang }}
                         </a>
                       </li>

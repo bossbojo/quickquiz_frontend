@@ -5,12 +5,14 @@
       <div class="logo d-flex justify-content-center">
         <img src="assets\img\unnamed.png" width="80px" height="80px;">
       </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="{{ 'Username' | lang}}" formControlName="username">
+      <div class="form-group text-left">
+        <label>{{ 'Username' | lang}}:</label>
+        <input type="text" class="form-control" placeholder="{{ 'Username' | lang }}" formControlName="username">
         <validation [control]="FromLogin.controls['username']"></validation>
       </div>
-      <div class="form-group">
-        <input type="password" class="form-control" placeholder="{{ 'Password' | lang}}" formControlName="password">
+      <div class="form-group text-left">
+        <label>{{ 'Password' | lang}}:</label>
+        <input type="password" class="form-control" placeholder="{{ 'Password' | lang }}" formControlName="password">
         <validation [control]="FromLogin.controls['password']"></validation>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%;">
@@ -21,13 +23,16 @@
 <div class="d-flex justify-content-center fixd_botton">
   <div style="color:#fff;" align="center">
     <label>
-      <a [ngClass]="['btn',BtnThai]" (click)="ActiveCheckLang('TH')">Thailand</a> |
-      <a [ngClass]="['btn',BtnEng]" (click)="ActiveCheckLang('EN')">English</a>
+      <a [ngClass]="['btn',BtnThai]" (click)="ActiveCheckLang('TH')">{{ 'Thailand' | lang}}</a> |
+      <a [ngClass]="['btn',BtnEng]" (click)="ActiveCheckLang('EN')">{{ 'English' | lang}}</a>
     </label>
     <br>
-    <label>Play more, anywhere and anytime, on your own or with friends.</label>
+    <label>{{ 'Play more, anywhere and anytime, on your own or with friends.' | lang}}</label>
     <br>
-    <label>Create your own quickquiz for FREE at quickquiz.com</label>
+    <label>{{ 'Create your own quickquiz for FREE at quickquiz.com'| lang}}</label>
     <br>
   </div>
 </div>
+<ng-container *ngIf="Username">
+  <app-verify-user [username]="Username" (login)="OnSubmit()"></app-verify-user>
+</ng-container>

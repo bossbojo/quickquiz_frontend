@@ -13,9 +13,6 @@ export class AppComponent {
   title = 'app';
   constructor(private AuthenSer: AuthenticationService, private route: Router, private global: GlobalValueService) {
     StorageConfog.setItem('lang', 'EN');
-    $(document).ready(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
   }
   onGetComponent(e) {
     this.global.Active = this.route.url.split('/')[1];

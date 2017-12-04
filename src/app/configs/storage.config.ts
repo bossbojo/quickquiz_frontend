@@ -11,7 +11,7 @@ export class StorageConfog {
             }
         }
         catch (e) {
-            console.log('Storage set item error : ', e);
+            //console.log('Storage set item error : ', e);
         }
     }
 
