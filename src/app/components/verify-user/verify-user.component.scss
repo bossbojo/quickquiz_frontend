@@ -1,0 +1,45 @@
+.img-file{
+    position: relative;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+.btnfile{
+    transition: all 0.5s;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    padding: 100px 0px 0px 0px;
+    color: #ffffff;
+}
+.img-file:hover{
+    .btnfile{
+        transition: all 0.5s;
+        opacity: 1;
+        background-color:rgba(0, 0, 0, 0.5); 
+    }
+}
+.loading-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-color: #000000;
+}
+.loading-text{
+    padding-top: 50px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+}
+.btn-file-bro{
+    padding: 5px;
+    border-radius: 5px; 
+    background-color:rgba(0, 0, 0, 0.5); 
+}
+.img-profile{
+    object-fit: cover;
+}

@@ -1,8 +1,14 @@
 <div class="sidebar" id="sidebar-main" *ngIf="UserType">
+<div>
+    <app-profile></app-profile>
+</div>
   <!-- Admin  -->
   <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminUsers]" (click)="ActiveBtn()">
       <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users' | lang }}</div>  
   </div>
+  <div *ngIf="UserType == 3" [ngClass]="['Menu',global.Active==Url.TeacherUsers?'Menu-active':'']" [routerLink]="['/',Url.TeacherUsers]" (click)="ActiveBtn()">
+    <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users' | lang }}</div>  
+</div>
   <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminLogUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminLogUsers]" (click)="ActiveBtn()">
       <div class="Menu-sub"><i class="material-icons">description</i> {{ 'Log Users'| lang}}</div>  
   </div>

@@ -5,18 +5,19 @@ import { GlobalValueService } from '../../services/global-value.service';
 import { StorageConfog } from '../../configs/storage.config';
 
 @Component({
-  selector: 'app-admin-users-page',
-  templateUrl: './admin-users-page.component.html',
-  styleUrls: ['./admin-users-page.component.scss']
+  selector: 'app-teacher-users',
+  templateUrl: './teacher-users.component.html',
+  styleUrls: ['./teacher-users.component.scss']
 })
-export class AdminUsersPageComponent implements OnInit {
+export class TeacherUsersComponent implements OnInit {
+
   OpenAddUser: boolean = false;
   UserId;
   UserAllData: any;
   UserType;
   User;
   constructor(private http: HttpService, private GlobalValue: GlobalValueService) {
-    this.OnGetDataAll();
+   // this.OnGetDataAll();
   }
 
   ngOnInit() {
@@ -32,18 +33,10 @@ export class AdminUsersPageComponent implements OnInit {
     }, 100);
   }
   OnGetDataAll() {
-    if (this.UserType == 1) {
-      this.http.requestGet(`get/user`).subscribe((res) => {
-        this.UserAllData = res;
-        this.UserAllData = this.UserAllData.data;
-      });
-    } else if (this.UserType == 3) {
-      this.http.requestGet(`api/get/user/for/teacher?id=${this.User.user_id}`).subscribe((res) => {
-        this.UserAllData = res;
-        this.UserAllData = this.UserAllData.data;
-      });
-    }
-
+    this.http.requestGet(`get/user/for/teacher?id=${this.User.user_id}`).subscribe((res) => {
+      this.UserAllData = res;
+      this.UserAllData = this.UserAllData.data;
+    });
   }
   OnRefresh(event) {
     if (event) {

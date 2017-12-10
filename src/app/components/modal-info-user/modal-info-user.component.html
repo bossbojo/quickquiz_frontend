@@ -1,0 +1,54 @@
+<div class="modal fade" id="info-user-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-info">
+        <button type="button" class="close" data-dismiss="modal" (click)="Onclose()">&times;</button>
+        <h4 class="modal-title">
+          <i class="material-icons">details</i> {{ 'Show detail user'|lang }}</h4>
+      </div>
+      <div class="modal-body" *ngIf="profile">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card hovercard">
+              <ng-container *ngIf="profile.UserType == 'student'">
+                  <div class="cardheader"></div>
+              </ng-container>
+              <ng-container *ngIf="profile.UserType != 'student'">
+                  <div class="cardheader2"></div>
+              </ng-container>
+              <div class="avatar">
+                <img alt="" src="{{ image }}">
+              </div>
+              <div class="info">
+                <div class="title">
+                  <a>{{ profile.Firstname }} {{ profile.Lastname }}</a>
+                </div>
+                <div class="desc">{{ profile.University }}</div>
+                <div class="desc">{{ profile.Faculty }}</div>
+                <div class="desc">{{ profile.Branch }}</div>
+                <div class="desc">Username : {{ profile.Username }}</div>
+                <div class="desc">User Type : {{ profile.UserType }}</div>
+              </div>
+              <div class="bottom">
+                <a class="btn btn-default" (click)="OnReset(profile.Username,profile.user_id)">
+                  <i class="material-icons">replay</i>
+                </a>
+                <a class="btn btn-warning" (click)="OnBlock(profile.Username,profile.user_id,profile.Status=='block'? 0:1)">
+                  <ng-container *ngIf="profile.Status=='block'">
+                      <i class="material-icons">undo</i>
+                  </ng-container>
+                  <ng-container *ngIf="profile.Status!='block'">
+                      <i class="material-icons">block</i>
+                  </ng-container>
+                </a>
+                <a class="btn btn-danger"(click)="OnRemove(profile.Username,profile.user_id)">
+                  <i class="material-icons">clear</i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

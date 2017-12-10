@@ -1,4 +1,6 @@
-import { environment } from "../../environments/environment.prod";
+import { environment } from "../../environments/environment";
+
+
 
 export const UrlConfig = {
     Home: '',
@@ -7,9 +9,10 @@ export const UrlConfig = {
     AdminLogUsers: 'admin-log-users',
     AdminBin: 'admin-bin',
     HomeTeacher: 'teacher',
+    TeacherUsers: 'teacher-users',
     HomeStudent: 'student',
     Signup: 'signup',
     Login: 'login',
 };
-//export const baseUrl = 'http://localhost:51161/api';
-export const baseUrl = 'http://quickquiz-v1.ddns.net/api';
+export const baseUrl = environment.production? 'http://quickquiz.paramat.work/api':'http://localhost:51161/api';
+export const baseUrlimg = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:51161/';

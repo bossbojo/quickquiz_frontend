@@ -24,6 +24,9 @@ import { AllowAnonymousGuard } from './guards/allowAnonymous.guard';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ModalInfoUserComponent } from './components/modal-info-user/modal-info-user.component';
+import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { ModalAddUserComponent } from './components/modal-add-user/modal-add-user.component';
 //page
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -32,8 +35,10 @@ import { HomeTeacherComponent } from './pages/teacher/home-teacher.component';
 import { HomeStudentComponent } from './pages/student/home-student.component';
 import { AdminLogUsersComponent } from './pages/admin-log-users/admin-log-users.component';
 import { AdminBinPageComponent } from './pages/admin-bin-page/admin-bin-page.component';
-import { ModalAddUserComponent } from './components/modal-add-user/modal-add-user.component';
-import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { TeacherUsersComponent } from './pages/teacher-users/teacher-users.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
+
 
 
 
@@ -56,7 +61,10 @@ import { VerifyUserComponent } from './components/verify-user/verify-user.compon
     AdminLogUsersComponent,
     AdminBinPageComponent,
     ModalAddUserComponent,
-    VerifyUserComponent
+    VerifyUserComponent,
+    ModalInfoUserComponent,
+    TeacherUsersComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

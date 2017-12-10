@@ -14,6 +14,7 @@ import { AcceptStudentGuard } from "./guards/AcceptStudent.guard";
 import { AdminUsersPageComponent } from "./pages/admin-users-page/admin-users-page.component";
 import { AdminLogUsersComponent } from "./pages/admin-log-users/admin-log-users.component";
 import { AdminBinPageComponent } from './pages/admin-bin-page/admin-bin-page.component';
+import { TeacherUsersComponent } from './pages/teacher-users/teacher-users.component';
 
 const Url = UrlConfig; 
 
@@ -26,6 +27,7 @@ export const RoutesList: Routes = [
     { path: Url.AdminBin, component: AdminBinPageComponent  ,canActivate: [AuthenticationGuard,AcceptAdminGuard]},
     //teacher
     { path: Url.HomeTeacher, component: HomeTeacherComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
+    { path: Url.TeacherUsers, component: TeacherUsersComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
     //student
     { path: Url.HomeStudent, component: HomeStudentComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
 

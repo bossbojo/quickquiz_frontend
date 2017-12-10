@@ -43,10 +43,13 @@ export class LoginComponent implements OnInit {
             let statusUser = StorageConfog.getItem('usertype')
               if(statusUser == 1){
                 this.route.navigate(['/',this.Url.HomeAdmin]);
+                location.reload();
               }else if(statusUser == 2){
                 this.route.navigate(['/',this.Url.HomeStudent]);
+                location.reload();
               }else{
                 this.route.navigate(['/',this.Url.HomeTeacher]);
+                location.reload();
               }
               this.global.OnHiddenLoading();
           }else{
@@ -91,4 +94,5 @@ export class LoginComponent implements OnInit {
       this.BtnEng = 'btn-info';
     }
   }
+  
 }
