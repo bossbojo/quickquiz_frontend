@@ -27,7 +27,7 @@
             <label for="sel1">{{ 'User status'|lang }}:</label>
             <select class="form-control" formControlName="UserType">
               <option value="2">{{ 'Student' | lang }}</option>
-              <option value="3">{{ 'Teacher' | lang }}</option>
+              <option value="3" *ngIf="UserType != 3">{{ 'Teacher' | lang }}</option>
             </select>
             <validation [control]="FormAddUser.controls['UserType']"></validation>
           </div>

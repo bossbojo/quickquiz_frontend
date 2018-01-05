@@ -4,6 +4,7 @@ import { environment } from "../../environments/environment";
 
 export const UrlConfig = {
     Home: '',
+    Management: 'management',
     HomeAdmin: 'admin',
     AdminUsers: 'admin-users',
     AdminLogUsers: 'admin-log-users',

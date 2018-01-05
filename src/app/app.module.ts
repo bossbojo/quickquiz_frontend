@@ -37,6 +37,7 @@ import { AdminLogUsersComponent } from './pages/admin-log-users/admin-log-users.
 import { AdminBinPageComponent } from './pages/admin-bin-page/admin-bin-page.component';
 import { TeacherUsersComponent } from './pages/teacher-users/teacher-users.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ManagementComponent } from './pages/management/management.component';
 
 
 
@@ -64,7 +65,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     VerifyUserComponent,
     ModalInfoUserComponent,
     TeacherUsersComponent,
-    ProfileComponent
+    ProfileComponent,
+    ManagementComponent
   ],
   imports: [
     BrowserModule,

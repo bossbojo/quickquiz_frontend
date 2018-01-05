@@ -13,12 +13,23 @@ export class ProfileComponent implements OnInit {
   image:any;
   profile:any;
   User:any;
-  constructor(private http:HttpService,private GlobalValue:GlobalValueService) { }
+  constructor(private http:HttpService,private GlobalValue:GlobalValueService) { 
+    
+  }
 
   
   ngOnInit() {
     this.User = StorageConfog.getItem('user');
     this.OnGetInfo();
+    if(!this.profile){
+      this.profile = {
+        Firstname : this.User.firstname,
+        Lastname :  this.User.lastname,
+        Username :this.User.username,
+        UserType : this.User.username,
+      }
+      this.image = `assets/img/user.png`;
+    }
   }
   OnGetInfo(){
     this.http.requestGet(`get/user/byid?id=${this.User.user_id}`).subscribe((res)=>{

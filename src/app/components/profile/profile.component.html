@@ -1,9 +1,12 @@
 <div class="card hovercard" *ngIf="profile" style="margin:0px;padding:0px;">
   <ng-container *ngIf="profile.UserType == 'student'">
-    <div class="cardheader"></div>
+    <div class="cardheader-student"></div>
   </ng-container>
-  <ng-container *ngIf="profile.UserType != 'student'">
-    <div class="cardheader2"></div>
+  <ng-container *ngIf="profile.UserType == 'teacher'">
+    <div class="cardheader-teacher"></div>
+  </ng-container>
+  <ng-container *ngIf="profile.UserType == 'admin'">
+    <div class="cardheader-admin"></div>
   </ng-container>
   <div class="avatar">
     <img alt="" src="{{ image }}">
@@ -12,9 +15,9 @@
     <div class="title">
       <a>{{ profile.Firstname }} {{ profile.Lastname }}</a>
     </div>
-    <div class="desc">{{ profile.University }}</div>
-    <div class="desc">{{ profile.Faculty }}</div>
-    <div class="desc">{{ profile.Branch }}</div>
+    <div class="desc" *ngIf="profile.University">{{ profile.University }}</div>
+    <div class="desc" *ngIf="profile.Faculty">{{ profile.Faculty }}</div>
+    <div class="desc" *ngIf="profile.Branch">{{ profile.Branch }}</div>
     <div class="desc">Username : {{ profile.Username }}</div>
     <div class="desc">User Type : {{ profile.UserType }}</div>
   </div>

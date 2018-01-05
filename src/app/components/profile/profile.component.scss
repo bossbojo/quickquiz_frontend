@@ -193,13 +193,18 @@
     background-color: rgba(214, 224, 226, 0.2);
 }
 
-.card.hovercard .cardheader {
+.card.hovercard .cardheader-student {
     background: url("http://lorempixel.com/850/280/nature/4/");
     background-size: cover;
     height: 135px;
 }
-.card.hovercard .cardheader2 {
+.card.hovercard .cardheader-teacher {
     background: url("http://lorempixel.com/850/280/nature/5/");
+    background-size: cover;
+    height: 135px;
+}
+.card.hovercard .cardheader-admin {
+    background: url("http://lorempixel.com/850/280/nature/6/");
     background-size: cover;
     height: 135px;
 }

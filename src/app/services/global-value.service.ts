@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageConfog } from '../configs/storage.config';
 @Injectable()
 export class GlobalValueService {
 
   //#region  sidebar
+  public User = StorageConfog.getItem('user');
   public Active: string;
   public OpenSideBar: boolean = false;
   ToggleSidebar() {

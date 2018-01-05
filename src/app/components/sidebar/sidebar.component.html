@@ -8,7 +8,7 @@
   </div>
   <div *ngIf="UserType == 3" [ngClass]="['Menu',global.Active==Url.TeacherUsers?'Menu-active':'']" [routerLink]="['/',Url.TeacherUsers]" (click)="ActiveBtn()">
     <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users' | lang }}</div>  
-</div>
+  </div>
   <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminLogUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminLogUsers]" (click)="ActiveBtn()">
       <div class="Menu-sub"><i class="material-icons">description</i> {{ 'Log Users'| lang}}</div>  
   </div>
@@ -16,17 +16,8 @@
     <div class="Menu-sub"><i class="material-icons">delete</i> {{ 'Bin'| lang}}</div>  
 </div>
   <!-- Teacher -->
-  <div *ngIf="UserType == 3" class="Menu">
-      <div class="Menu-sub">menu1</div>  
-  </div>
-  <div *ngIf="UserType == 3" class="Menu">
-      <div class="Menu-sub">menu1</div>  
-  </div>
-  <div *ngIf="UserType == 3" class="Menu">
-      <div class="Menu-sub">menu1</div>  
-  </div>
-  <div *ngIf="UserType == 3" class="Menu">
-      <div class="Menu-sub">menu1</div>  
+  <div *ngIf="UserType == 3 || UserType == 1" [ngClass]="['Menu',global.Active==Url.Management?'Menu-active':'']" [routerLink]="['/',Url.Management]" (click)="ActiveBtn()">
+    <div class="Menu-sub"><i class="material-icons">perm_data_setting</i> {{ 'Management' | lang }}</div>  
   </div>
   <!-- logout -->
   <div class="Menu">

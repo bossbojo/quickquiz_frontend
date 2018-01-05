@@ -1,0 +1,154 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-warning">
+      <div class="panel-heading text-uppercase">{{ 'University'| lang }}</div>
+      <div class="panel-body">
+        <button class="btn btn-warning text-uppercase" data-toggle="modal" data-target="#university-modal">
+          <i class="material-icons">add_box</i> {{ 'Add University'| lang}}
+        </button>
+        <ul class="list-group">
+          <li class="list-group-item text-uppercase" *ngFor="let Universitys of University">{{ Universitys.Fullwords }} ( {{Universitys.Abbreviation}} )</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-info">
+      <div class="panel-heading text-uppercase">{{ 'Faculty'|lang }}</div>
+      <div class="panel-body">
+        <button class="btn btn-info text-uppercase" data-toggle="modal" data-target="#faculty-modal">
+          <i class="material-icons">add_box</i> {{ 'Add Faculty'| lang}}
+        </button>
+        <ul class="list-group">
+          <li class="list-group-item text-uppercase cursorP" *ngFor="let Facultys of Faculty" (click)="OnSelectFaculty(Facultys.Abbreviation)">
+            {{ Facultys.Fullwords }} ( {{Facultys.Abbreviation}} )
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading text-uppercase">{{ 'Major'|lang }}</div>
+      <div class="panel-body">
+        <button class="btn btn-primary text-uppercase" data-toggle="modal" data-target="#major-modal">
+          <i class="material-icons">add_box</i> {{ 'Add Major'| lang}}
+        </button>
+        <div class="form-group">
+          <label for="sel1" class="text-uppercase">Select faculty:</label>
+          <select class="form-control" id="sel1" (change)="OnSelectFaculty($event.target.value)">
+            <option value="">Select all...</option>
+            <option *ngFor="let Facultys of Faculty" value="{{Facultys.Abbreviation}}">{{ Facultys.Fullwords }} ( {{Facultys.Abbreviation}} )</option>
+          </select>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item text-uppercase" *ngFor="let Majors of Major">{{ Majors.Fullwords }} ( {{Majors.Abbreviation}} )</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal add university -->
+<div class="modal fade" id="university-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-warning">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-uppercase">
+          <i class="material-icons">add_box</i> {{ 'Add University'| lang}}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="FormUniversity" (submit)="OnSubmitUniversity()">
+          <div class="form-group">
+            <label>{{ 'University'|lang}}:</label>
+            <input type="text" class="form-control" placeholder="{{ 'University...'|lang}}" formControlName="FullWord">
+            <validation [control]="FormUniversity.controls['FullWord']"></validation>
+          </div>
+          <div class="form-group">
+            <label>{{ 'University abbreviation'|lang}}:</label>
+            <input type="text" class="form-control text-uppercase" placeholder="{{ 'University Abbreviation...'|lang}}" formControlName="Abbreviation" maxlength="5">
+            <validation [control]="FormUniversity.controls['Abbreviation']"></validation>
+          </div>
+          <div class="form-group" align="right">
+            <button class="btn btn-danger" data-dismiss="modal" id="CloseUniversity">Close</button>
+            <button class="btn btn-success" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal add faculty -->
+<div class="modal fade" id="faculty-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-info">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-uppercase">
+          <i class="material-icons">add_box</i> {{ 'Add Faculty'| lang}}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <form [formGroup]="FormFaculty" (submit)="OnSubmitFaculty()">
+            <div class="form-group">
+              <label>{{ 'Faculty'|lang}}:</label>
+              <input type="text" class="form-control" placeholder="{{ 'Faculty...'|lang}}" formControlName="FullWord">
+              <validation [control]="FormUniversity.controls['FullWord']"></validation>
+            </div>
+            <div class="form-group">
+              <label>{{ 'Faculty abbreviation'|lang}}:</label>
+              <input type="text" class="form-control text-uppercase" placeholder="{{ 'Faculty Abbreviation...'|lang}}" formControlName="Abbreviation" maxlength="2">
+              <validation [control]="FormUniversity.controls['Abbreviation']"></validation>
+            </div>
+            <div class="form-group" align="right">
+              <button class="btn btn-danger" data-dismiss="modal" id="CloseFaculty">Close</button>
+              <button class="btn btn-success" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal add major -->
+<div class="modal fade" id="major-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-primary">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-uppercase">
+          <i class="material-icons">add_box</i> {{ 'Add Major'| lang}}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <form [formGroup]="FormMajor" (submit)="OnSubmitMajor()">
+            <div class="form-group">
+              <label>{{ 'Major'|lang}}:</label>
+              <input type="text" class="form-control" placeholder="{{ 'Major...'|lang}}" formControlName="FullWord">
+              <validation [control]="FormUniversity.controls['FullWord']"></validation>
+            </div>
+            <div class="form-group">
+              <label>{{ 'Major abbreviation'|lang}}:</label>
+              <input type="text" class="form-control text-uppercase" placeholder="{{ 'Major Abbreviation...'|lang}}" formControlName="Abbreviation" maxlength="2">
+              <validation [control]="FormUniversity.controls['Abbreviation']"></validation>
+            </div>
+            <div class="form-group">
+              <label>{{ 'Faculty'|lang}}:</label>
+              <select class="form-control" formControlName="Faculty">
+                <option *ngFor="let Facultys of Faculty"  value="{{Facultys.Abbreviation}}">{{ Facultys.Fullwords }} ( {{Facultys.Abbreviation}} )</option>
+                <validation [control]="FormUniversity.controls['Faculty']"></validation>
+              </select>
+            </div>
+            <div class="form-group" align="right">
+              <button class="btn btn-danger" data-dismiss="modal" id="CloseMajor">Close</button>
+              <button class="btn btn-success" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

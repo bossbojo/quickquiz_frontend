@@ -34,8 +34,14 @@ export class HttpService {
     // Process map data : ตรวจสอบข้อมูลและแปลงเป็น Json 
     private onMapData(response: Response): ResponseModel {
         let responseData: any = {};
-        try { responseData.data = response.json(); }
-        catch (e) { responseData.data = response.text(); }
+        try {
+            responseData.data = response.json();
+        }
+        catch (e) {
+            if (response.text()) {
+                responseData.data = response.text()
+            }
+        }
         responseData.status = response.status;
         responseData.statusText = response.statusText;
         responseData.response = response;
@@ -49,7 +55,7 @@ export class HttpService {
     // Process do data : จัดการข้อมูลกรณีมีข้อมูลการ authentication ออกมา
     onDoProcess(response: ResponseModel) {
         if (response.Token)
-            this.authenticated.setAuthenticated(response.Token,response.Detail);
+            this.authenticated.setAuthenticated(response.Token, response.Detail);
     }
 
     // Error handle : ส่ง error ออกไปเมื่อ server เกิดข้อผิดพลาด
@@ -95,6 +101,6 @@ export class ResponseModel {
     Message: string;
     TempData: string;
     Token: string;
-    Detail:any;
+    Detail: any;
     response: Response;
 }

@@ -15,6 +15,7 @@ export class AppComponent {
     StorageConfog.setItem('lang', 'EN');
   }
   onGetComponent(e) {
+    //this.global.ToggleSidebar();
     this.global.Active = this.route.url.split('/')[1];
     if (this.global.Active == 'login') {
       this.NavberAdmin = false;
@@ -29,6 +30,9 @@ export class AppComponent {
     }
   }
   OnHiddenSidebar() {
-    $('#sidebar-main').addClass('sidebar-hidden');
+    if(!this.global.OpenSideBar){
+      this.global.ToggleSidebar();
+    }
+
   }
 }

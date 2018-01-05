@@ -5,6 +5,7 @@ import { m_addUser } from '../../model/m_addUser';
 import { ValidatorsConfig } from '../../configs/validators.config';
 import { jalert } from '../../configs/alert.config';
 import { GlobalValueService } from '../../services/global-value.service';
+import { StorageConfog } from '../../configs/storage.config';
 
 @Component({
   selector: 'app-modal-add-user',
@@ -16,7 +17,10 @@ export class ModalAddUserComponent implements OnChanges {
   @Output() modalChange = new EventEmitter();
   @Output() Refresh = new EventEmitter();
   FormAddUser: FormGroup
-  constructor(private build: FormBuilder, private http: HttpService,private global:GlobalValueService) { }
+  UserType;
+  constructor(private build: FormBuilder, private http: HttpService,private global:GlobalValueService) {
+    this.UserType = StorageConfog.getItem('usertype');
+   }
 
   ngOnChanges() {
     if (this.modal) {
@@ -51,8 +55,10 @@ export class ModalAddUserComponent implements OnChanges {
         this.FormAddUser.controls['Username'].value,
         this.FormAddUser.controls['Password'].value,
         this.FormAddUser.controls['UserType'].value,
+        this.global.User.user_id
       );
-      this.http.requestPost(`add/user`, obj).subscribe((res) => {
+      let url = this.UserType == 3? `add/user/by/teacher`:`add/user`;
+      this.http.requestPost(url, obj).subscribe((res) => {
         let result: any = res;
         //console.log(result.data);
         if (result.data.newUser) {

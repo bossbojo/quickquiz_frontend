@@ -17,19 +17,29 @@ export class VerifyUserComponent implements OnChanges {
   University: any;
   Faculty: any;
   Major: any;
+  MajorBackUp: any;
   loadingimg = false;
   image = 'assets/img/user.png';
+  CheckAddBy: any;
   constructor(private build: FormBuilder, private http: HttpService, private global: GlobalValueService) {
   }
 
   ngOnChanges() {
     if (this.username) {
-      this.SetFormGroup();
-      $('#verify-modal').modal();
       this.GetDataUniversity();
       this.GetDataFaculty();
       this.GetDataMajor();
+      this.OncheckAddByTeacher();
+      setTimeout(() => {
+        this.SetFormGroup();
+      }, 1000);
+      $('#verify-modal').modal();
     }
+  }
+  OncheckAddByTeacher() {
+    this.http.requestGet(`check/userAddByTeacher?username=${this.username}`).subscribe((res) => {
+      this.CheckAddBy = res.data;
+    });
   }
   GetDataUniversity() {
     this.http.requestGet(`get/data/all/university`).subscribe((res) => {
@@ -44,28 +54,44 @@ export class VerifyUserComponent implements OnChanges {
   GetDataMajor() {
     this.http.requestGet(`get/data/all/major`).subscribe((res) => {
       this.Major = res.data
+      this.MajorBackUp = this.Major;
     });
   }
   OnChooseFaculty() {
-    this.Major = this.Major.filter(
+    this.Major = this.MajorBackUp.filter(
       ma => ma.Faculty_Abbreviation == this.FormVerify.controls['faculty'].value
     );
   }
   SetFormGroup() {
-    this.FormVerify = this.build.group({
-      username: [this.username, [Validators.required]],
-      firstname: ['', [Validators.required]],
-      lastname: ['', [Validators.required]],
-      faculty: ['', [Validators.required]],
-      branch: ['', [Validators.required]],
-      university: ['', [Validators.required]],
-      avatar:null
-    });
+    console.log(this.CheckAddBy);
+
+    if (this.CheckAddBy) {
+      this.FormVerify = this.build.group({
+        username: [this.username, [Validators.required]],
+        firstname: ['', [Validators.required]],
+        lastname: ['', [Validators.required]],
+        faculty: [{ value: this.CheckAddBy.faculty_id, disabled: true }, [Validators.required]],
+        branch: [{ value: this.CheckAddBy.major_id, disabled: true }, [Validators.required]],
+        university: [{ value: this.CheckAddBy.university_id, disabled: true }, [Validators.required]],
+        avatar: [null, [Validators.required]]
+      });
+    } else {
+      this.FormVerify = this.build.group({
+        username: [this.username, [Validators.required]],
+        firstname: ['', [Validators.required]],
+        lastname: ['', [Validators.required]],
+        faculty: ['', [Validators.required]],
+        branch: ['', [Validators.required]],
+        university: ['', [Validators.required]],
+        avatar: [null, [Validators.required]]
+      });
+    }
+
   }
   onFileChange(event) {
     this.loadingimg = true;
     let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
+    if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -73,7 +99,7 @@ export class VerifyUserComponent implements OnChanges {
         this.image = reader.result;
         this.loadingimg = false;
       };
-    }else{
+    } else {
       this.loadingimg = false;
     }
 
@@ -103,9 +129,9 @@ export class VerifyUserComponent implements OnChanges {
             this.global.OnHiddenLoading();
           });
         }
-      },(err)=>{
+      }, (err) => {
         console.log(err);
-        jalert('error',err.data.Message);
+        jalert('error', err.data.Message);
         this.global.OnHiddenLoading();
       });
     } else {
