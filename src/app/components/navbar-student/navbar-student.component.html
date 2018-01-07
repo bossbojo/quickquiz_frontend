@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fulid">
+    <div class="header-project">
+      <span style="float:left;">
+        <label href="" [routerLink]="['/',Url.StudentProfile]">
+           <img [src]="image" class="img-circle" alt="Cinque Terre" style="object-fit: cover;" width="30px" height="30px"> {{ User.firstname }}
+        </label>
+        |
+        <label href="" [routerLink]="['/',Url.StudentQuizReady]">
+            <i class="material-icons">graphic_eq</i> Quiz
+        </label>
+      </span>
+      <span style="float:right;">
+        <label (click)="OnchangeLang()">
+          <i class="material-icons">g_translate</i>
+          <span class="span-lang">{{ Lang |lang }}</span>
+        </label>
+        |
+        <label (click)="Onlogout()">
+          <i class="material-icons sd-hidden">lock_open</i> {{ 'Log Out' | lang }}
+        </label>
+      </span>
+
+    </div>
+  </div>
+</nav>

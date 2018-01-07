@@ -38,6 +38,9 @@ import { AdminBinPageComponent } from './pages/admin-bin-page/admin-bin-page.com
 import { TeacherUsersComponent } from './pages/teacher-users/teacher-users.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ManagementComponent } from './pages/management/management.component';
+import { NavbarStudentComponent } from './components/navbar-student/navbar-student.component';
+import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
+import { StudentQuizReadyComponent } from './pages/student-quiz-ready/student-quiz-ready.component';
 
 
 
@@ -66,7 +69,10 @@ import { ManagementComponent } from './pages/management/management.component';
     ModalInfoUserComponent,
     TeacherUsersComponent,
     ProfileComponent,
-    ManagementComponent
+    ManagementComponent,
+    NavbarStudentComponent,
+    StudentProfileComponent,
+    StudentQuizReadyComponent
   ],
   imports: [
     BrowserModule,

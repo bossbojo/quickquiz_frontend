@@ -10,6 +10,7 @@ import { GlobalValueService } from './services/global-value.service';
 })
 export class AppComponent {
   NavberAdmin: boolean = false;
+  NavberStudent:boolean = false;
   title = 'app';
   constructor(private AuthenSer: AuthenticationService, private route: Router, private global: GlobalValueService) {
     StorageConfog.setItem('lang', 'EN');
@@ -19,14 +20,18 @@ export class AppComponent {
     this.global.Active = this.route.url.split('/')[1];
     if (this.global.Active == 'login') {
       this.NavberAdmin = false;
+      this.NavberStudent = false;
       $('#bodymain').addClass('colorchange')
       $('#sidebar-main').addClass('sidebar-hidden');
     } else {
       $('#bodymain').removeClass('colorchange')
     }
     if (this.AuthenSer.getAuthenticated) {
-      if (StorageConfog.getItem('usertype') == 2) return;
-      this.NavberAdmin = true;
+      if (StorageConfog.getItem('usertype') == 2){
+        this.NavberStudent = true;
+      }else{
+        this.NavberAdmin = true;
+      }  
     }
   }
   OnHiddenSidebar() {

@@ -17,6 +17,7 @@
 </div>
 <app-navbar *ngIf="NavberAdmin"></app-navbar>
 <app-sidebar *ngIf="NavberAdmin"></app-sidebar>
+<app-navbar-student *ngIf="NavberStudent"></app-navbar-student>
 <div class="container-fulid" (click)="OnHiddenSidebar()">
     <router-outlet (activate)="onGetComponent($event)"></router-outlet>
 </div>

@@ -1,3 +1,17 @@
-<p>
-  home-student works!
-</p>
+<div class="col-md-6 col-md-offset-3 text-center">
+    <div class="margin-top">
+      <div>
+        <img src="assets\img\unnamed.png" width="100" height="100">
+      </div>
+      <label class="text-uppercase">QuickQuiz</label>
+      <p class="text-uppercase">{{ 'Wellcome'|lang }}</p>
+      <p class="text-uppercase"><img [src]="image" class="img-circle" alt="Cinque Terre" style="object-fit: cover;" width="60px" height="60px"> {{ User.firstname }} {{ User.lastname }}</p>
+      <hr>
+      <p class="dec">
+        <i class="material-icons">graphic_eq</i> {{ 'Go to quick'|lang }}
+        <i class="material-icons">g_translate</i> {{ 'Button change language'|lang }}
+        <i class="material-icons sd-hidden">lock_open</i> {{ 'Button log out' |lang}}
+      </p>
+    </div>
+  </div>
+  

@@ -1,0 +1,25 @@
+.navbar-inverse {
+  background-color: #000080;
+  border: none;
+}
+
+.header-project {
+  padding: 12px;
+}
+
+.header-project-right {
+  float: right;
+  padding: 12px;
+}
+
+a {
+  cursor: pointer;
+}
+label{
+  color: aliceblue;
+}
+label:hover {
+  transition: all 0.5s;
+  color: #408080;
+  cursor: pointer;
+}

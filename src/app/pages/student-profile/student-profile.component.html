@@ -1,0 +1,62 @@
+<div class="window" *ngIf="profile">
+  <div class="overlay"></div>
+  <div class="box header">
+    <img [src]="image" alt="" />
+    <h2 class="text-uppercase">{{ User.firstname }} {{ User.lastname }}</h2>
+    <h4 class="text-uppercase">{{ profile.University }}</h4>
+    <div class="left-bottom-profile">
+      50 point | 2 quiz
+    </div>
+  </div>
+  <div class="box footer">
+    <div class="col-md-12">
+      <a class="btn btn-profile">{{ 'Edit profile'| lang}}</a>
+    </div>
+    <div class="col-md-6">
+      <p class="font-profile">
+        <i class="material-icons">school</i> University : {{ profile.University }}
+      </p>
+      <p class="font-profile">
+        <i class="material-icons">store_mall_directory</i> Faculty : {{ profile.Faculty }}
+      </p>
+      <p class="font-profile">
+        <i class="material-icons">streetview</i> Major : {{ profile.Branch }}
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p class="font-profile">
+        <i class="material-icons">spa</i> User ID : #{{ profile.user_id }}</p>
+      <p class="font-profile">
+        <i class="material-icons">layers</i> Username : {{ profile.Username }}</p>
+      <p class="font-profile">
+        <i class="material-icons">person_outline</i> User Type : {{ profile.UserType }}</p>
+    </div>
+  </div>
+</div>
+<div class="row" >
+  <ng-container *ngFor="let QuizLists of QuizList">
+    <div class="col-md-3 box-show">
+      <div class="body-box">
+        <div class="col-md-6">
+          <p class="code-show">
+            <span class="font-profile">
+              <b>SW00D{{ QuizLists }}</b>
+            </span>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p class="font-profile" align="right">
+              {{ QuizLists }}0/100 point
+          </p>
+          <p class="font-profile-small" align="right">
+            Use time 49.00 minute
+          </p>
+          <p class="font-profile-small" align="right">
+            time test 0{{ QuizLists }}/2/2018
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<br><br><br>
