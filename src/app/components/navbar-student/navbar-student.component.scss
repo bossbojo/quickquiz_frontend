@@ -23,3 +23,11 @@ label:hover {
   color: #408080;
   cursor: pointer;
 }
+.text-in-navbar-student{
+  display:inline;
+}
+@media screen and (max-width:558px) {
+  .text-in-navbar-student{
+    display: none;
+  }
+}

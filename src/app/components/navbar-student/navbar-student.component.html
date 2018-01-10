@@ -7,17 +7,21 @@
         </label>
         |
         <label href="" [routerLink]="['/',Url.StudentQuizReady]">
-            <i class="material-icons">graphic_eq</i> Quiz
+            <i class="material-icons">graphic_eq</i> <span class="text-in-navbar-student">Quiz</span>
+        </label>
+        |
+        <label href="">
+            <i class="material-icons">settings</i> <span class="text-in-navbar-student">Setting</span>
         </label>
       </span>
       <span style="float:right;">
         <label (click)="OnchangeLang()">
           <i class="material-icons">g_translate</i>
-          <span class="span-lang">{{ Lang |lang }}</span>
+          <span class="span-lang"> <span  class="text-in-navbar-student">{{ Lang |lang }}</span></span>
         </label>
         |
         <label (click)="Onlogout()">
-          <i class="material-icons sd-hidden">lock_open</i> {{ 'Log Out' | lang }}
+          <i class="material-icons sd-hidden">lock_open</i> <span class="text-in-navbar-student">{{ 'Log Out' | lang }}</span>
         </label>
       </span>
 

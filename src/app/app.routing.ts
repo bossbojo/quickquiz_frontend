@@ -18,6 +18,8 @@ import { TeacherUsersComponent } from './pages/teacher-users/teacher-users.compo
 import { ManagementComponent } from './pages/management/management.component';
 import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
 import { StudentQuizReadyComponent } from './pages/student-quiz-ready/student-quiz-ready.component';
+import { StudentQuizStartComponent } from './pages/student-quiz-start/student-quiz-start.component';
+import { StudentQuizScoreComponent } from './pages/student-quiz-score/student-quiz-score.component';
 
 const Url = UrlConfig; 
 
@@ -35,6 +37,8 @@ export const RoutesList: Routes = [
     { path: Url.HomeStudent, component: HomeStudentComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     { path: Url.StudentProfile , component: StudentProfileComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     { path: Url.StudentQuizReady , component: StudentQuizReadyComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
+    { path: Url.StudentQuizStart , component: StudentQuizStartComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
+    { path: Url.StudentQuizScore , component: StudentQuizScoreComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     //teacher of admin
     { path: Url.Management, component: ManagementComponent  ,canActivate: [AuthenticationGuard]},
     { path: '**', redirectTo:Url.Login, pathMatch: 'full' },

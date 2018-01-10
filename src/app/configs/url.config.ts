@@ -14,6 +14,8 @@ export const UrlConfig = {
     HomeStudent: 'student',
     StudentProfile: 'student.profile',
     StudentQuizReady: 'student.quiz.ready',
+    StudentQuizStart: 'student.quiz.start',
+    StudentQuizScore:'student.quiz.score',
     Signup: 'signup',
     Login: 'login',
 };

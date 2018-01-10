@@ -8,6 +8,7 @@ export function jalert(title: string, content: string = '') {
         $.alert({
             title: title || 'Alert!',
             content: content,
+            theme: 'supervan' ,
             buttons: {
                 ok: {
                     text: lang.translage("ok"),
@@ -23,6 +24,7 @@ export function jconfirm(title: string, content: string = ''): Promise<boolean> 
         $.confirm({
             title: title || 'Confirm!',
             content: content,
+            theme: 'supervan' ,
             buttons: {
                 confirm: {
                     text: lang.translage("confirm"),
@@ -40,7 +42,8 @@ export function jconfirm(title: string, content: string = ''): Promise<boolean> 
 export function jdialog(title: string, content: string = '') {
     $.dialog({
         title: title || 'Dialog!',
-        content: content
+        content: content,
+        theme: 'supervan' 
     });
 }
 

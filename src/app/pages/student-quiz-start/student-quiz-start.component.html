@@ -1,0 +1,35 @@
+<div class="row" *ngIf="morkdata">
+  <div class="col-md-6 col-md-offset-3">
+    <p class="count-question">{{quiznow}}/{{quizmax}}</p>
+    <div class="timer"><p>{{ minute < 10? '0'+minute:minute }}.{{ second < 10? '0'+second:second }} Minute</p></div>
+    <hr>
+  </div>
+  <ng-container *ngFor="let quiz of morkdata;let i = index">
+    <ng-container *ngIf="quiznow == i+1">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="text-center" *ngIf="quiz.img">
+          <img src="{{quiz.img}}" width="350px">
+        </div>
+        <p class="question">
+          &nbsp;&nbsp;{{ quiz.q }}
+        </p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="quiznow == i+1">
+      <div class="col-md-6 col-md-offset-3">
+        <ng-container *ngFor="let quizs of quiz.an;let k = index">
+          <div class="col-md-6">
+            <div class="body-box shadow-show-box anwser-box" [ngClass]="[classchoose[k]]" (click)="OnclickChoose(quiz.id,quizs.id)">
+              <p class="anwser">
+                <i class="material-icons">{{iconchoose[k]}}</i> {{ quizs.text }}
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+<br>
+<br>
+<br>

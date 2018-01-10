@@ -1,0 +1,54 @@
+.row {
+  color: white;
+  margin-top: 50px;
+  padding: 15px;
+}
+
+@media screen and (max-width:558px) {
+  .row {
+    margin-top: 30px;
+  }
+}
+
+.count-question {
+  font-size: 100px;
+  text-align: center;
+}
+
+.question {
+  font-size: 30px;
+}
+
+.anwser {
+  font-size: 23px;
+  padding-top: 10px;
+}
+
+.anwser-box {
+  transition: all 0.5s;
+}
+
+.anwser-box:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+  color: black;
+  transition: all 0.5s;
+}
+.bg-blueviolet{
+    background-color: blueviolet;
+}
+
+.bg-cadetblue{
+    background-color: cadetblue;
+}
+.bg-crimson{
+    background-color: crimson;
+}
+
+.bg-darkgreen{
+    background-color: darkgreen;
+}
+.timer{
+  text-align: center;
+  font-size: 25px;
+}

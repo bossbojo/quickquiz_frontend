@@ -41,6 +41,9 @@ import { ManagementComponent } from './pages/management/management.component';
 import { NavbarStudentComponent } from './components/navbar-student/navbar-student.component';
 import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
 import { StudentQuizReadyComponent } from './pages/student-quiz-ready/student-quiz-ready.component';
+import { StudentQuizStartComponent } from './pages/student-quiz-start/student-quiz-start.component';
+import { StudentQuizScoreComponent } from './pages/student-quiz-score/student-quiz-score.component';
+import { StudentSettingComponent } from './student-setting/student-setting.component';
 
 
 
@@ -72,7 +75,10 @@ import { StudentQuizReadyComponent } from './pages/student-quiz-ready/student-qu
     ManagementComponent,
     NavbarStudentComponent,
     StudentProfileComponent,
-    StudentQuizReadyComponent
+    StudentQuizReadyComponent,
+    StudentQuizStartComponent,
+    StudentQuizScoreComponent,
+    StudentSettingComponent
   ],
   imports: [
     BrowserModule,
