@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h1>Start Quiz</h1>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-6">
+          <h4 class="text-uppercase"><i class="material-icons">code</i> List code</h4>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Filter code quiz...">
+          </div>
+          <div>
+            <ul class="list-group">
+              <li class="list-group-item list-btn">ASQ23S <span style="float:right;">show room<i class="material-icons">navigate_next</i></span></li>
+              <li class="list-group-item list-btn">ASQ23S <span style="float:right;">show room<i class="material-icons">navigate_next</i></span></li>
+              <li class="list-group-item list-btn">ASQ23S <span style="float:right;">show room<i class="material-icons">navigate_next</i></span></li>
+              <li class="list-group-item list-btn">ASQ23S <span style="float:right;">show room<i class="material-icons">navigate_next</i></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 border-line-left">
+          <div>
+           <h4 class="text-uppercase"><i class="material-icons">room</i> Room Quiz</h4>
+           <div class="scoll-bar">
+            <div class="bg-fixd" *ngIf="Locked"></div>
+            <div class="center" *ngIf="Locked"><span><i class="material-icons">lock</i> Locked</span></div>
+            <ul class="list-group">
+              <li class="list-group-item">First item <span class="btn-kick"><i class="material-icons">call_missed_outgoing</i>kick</span></li>
+              <li class="list-group-item">Second item <span class="btn-kick"><i class="material-icons">call_missed_outgoing</i>kick</span></li>
+              <li class="list-group-item">Third item <span class="btn-kick"><i class="material-icons">call_missed_outgoing</i>kick</span></li>
+            </ul>
+           </div>
+           <div align="right">
+             <div><hr></div>
+             <button class="btn btn-danger" (click)="OnLocked()">
+               <ng-container *ngIf="Locked">
+                  <i class="material-icons">lock_open</i> UnLock room
+               </ng-container>
+               <ng-container *ngIf="!Locked">
+                  <i class="material-icons">lock</i> Lock room
+                </ng-container>
+              </button>
+             <button class="btn btn-success" ><i class="material-icons">done</i> Let's Start</button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

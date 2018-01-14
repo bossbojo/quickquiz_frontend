@@ -43,13 +43,11 @@ import { StudentProfileComponent } from './pages/student-profile/student-profile
 import { StudentQuizReadyComponent } from './pages/student-quiz-ready/student-quiz-ready.component';
 import { StudentQuizStartComponent } from './pages/student-quiz-start/student-quiz-start.component';
 import { StudentQuizScoreComponent } from './pages/student-quiz-score/student-quiz-score.component';
-import { StudentSettingComponent } from './student-setting/student-setting.component';
-
-
-
-
-
-
+import { StudentSettingComponent } from './pages/student-setting/student-setting.component';
+import { TeacherListQuizComponent } from './pages/teacher-list-quiz/teacher-list-quiz.component';
+import { TeacherReportComponent } from './pages/teacher-report/teacher-report.component';
+import { TeacherStartQuizComponent } from './pages/teacher-start-quiz/teacher-start-quiz.component';
+import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +76,11 @@ import { StudentSettingComponent } from './student-setting/student-setting.compo
     StudentQuizReadyComponent,
     StudentQuizStartComponent,
     StudentQuizScoreComponent,
-    StudentSettingComponent
+    StudentSettingComponent,
+    TeacherListQuizComponent,
+    TeacherReportComponent,
+    TeacherStartQuizComponent,
+    TeacherSettingComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,7 @@ import { StudentSettingComponent } from './student-setting/student-setting.compo
     AcceptStudentGuard,
     AcceptTeacherGuard,
     AuthenticationGuard,
-    AllowAnonymousGuard
+    AllowAnonymousGuard,
   ],
   bootstrap: [AppComponent]
 })

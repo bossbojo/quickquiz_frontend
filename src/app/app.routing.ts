@@ -16,10 +16,17 @@ import { AdminLogUsersComponent } from "./pages/admin-log-users/admin-log-users.
 import { AdminBinPageComponent } from './pages/admin-bin-page/admin-bin-page.component';
 import { TeacherUsersComponent } from './pages/teacher-users/teacher-users.component';
 import { ManagementComponent } from './pages/management/management.component';
+
 import { StudentProfileComponent } from './pages/student-profile/student-profile.component';
 import { StudentQuizReadyComponent } from './pages/student-quiz-ready/student-quiz-ready.component';
 import { StudentQuizStartComponent } from './pages/student-quiz-start/student-quiz-start.component';
 import { StudentQuizScoreComponent } from './pages/student-quiz-score/student-quiz-score.component';
+import { StudentSettingComponent } from './pages/student-setting/student-setting.component';
+
+import { TeacherListQuizComponent } from './pages/teacher-list-quiz/teacher-list-quiz.component';
+import { TeacherReportComponent } from './pages/teacher-report/teacher-report.component';
+import { TeacherStartQuizComponent } from './pages/teacher-start-quiz/teacher-start-quiz.component';
+import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting.component';
 
 const Url = UrlConfig; 
 
@@ -33,12 +40,17 @@ export const RoutesList: Routes = [
     //teacher
     { path: Url.HomeTeacher, component: HomeTeacherComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
     { path: Url.TeacherUsers, component: TeacherUsersComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
+    { path: Url.TeacherListQuiz, component: TeacherListQuizComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
+    { path: Url.TeacherReport, component: TeacherReportComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
+    { path: Url.TeacherStartQuiz, component: TeacherStartQuizComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
+    { path: Url.TeacherSetting, component: TeacherSettingComponent  ,canActivate: [AuthenticationGuard,AcceptTeacherGuard]},
     //student
     { path: Url.HomeStudent, component: HomeStudentComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     { path: Url.StudentProfile , component: StudentProfileComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     { path: Url.StudentQuizReady , component: StudentQuizReadyComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     { path: Url.StudentQuizStart , component: StudentQuizStartComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     { path: Url.StudentQuizScore , component: StudentQuizScoreComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
+    { path: Url.StudentSetting , component: StudentSettingComponent  ,canActivate: [AuthenticationGuard,AcceptStudentGuard]},
     //teacher of admin
     { path: Url.Management, component: ManagementComponent  ,canActivate: [AuthenticationGuard]},
     { path: '**', redirectTo:Url.Login, pathMatch: 'full' },

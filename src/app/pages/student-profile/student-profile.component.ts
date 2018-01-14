@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { StorageConfog } from '../../configs/storage.config';
-import { baseUrlimg } from '../../configs/url.config';
+import { baseUrlimg, UrlConfig } from '../../configs/url.config';
 
 @Component({
   selector: 'app-student-profile',
@@ -9,6 +9,7 @@ import { baseUrlimg } from '../../configs/url.config';
   styleUrls: ['./student-profile.component.scss']
 })
 export class StudentProfileComponent implements OnInit {
+  Url = UrlConfig;
   User:any;
   profile:any;
   image:any;

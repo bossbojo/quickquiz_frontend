@@ -2,25 +2,39 @@
 <div>
     <app-profile></app-profile>
 </div>
-  <!-- Admin  -->
+<div class="scoll-bar"  id="style-1">
+      <!-- Admin  -->
   <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminUsers]" (click)="ActiveBtn()">
-      <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users' | lang }}</div>  
-  </div>
-  <div *ngIf="UserType == 3" [ngClass]="['Menu',global.Active==Url.TeacherUsers?'Menu-active':'']" [routerLink]="['/',Url.TeacherUsers]" (click)="ActiveBtn()">
     <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users' | lang }}</div>  
-  </div>
-  <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminLogUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminLogUsers]" (click)="ActiveBtn()">
-      <div class="Menu-sub"><i class="material-icons">description</i> {{ 'Log Users'| lang}}</div>  
-  </div>
-  <div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminBin?'Menu-active':'']" [routerLink]="['/',Url.AdminBin]" (click)="ActiveBtn()">
-    <div class="Menu-sub"><i class="material-icons">delete</i> {{ 'Bin'| lang}}</div>  
 </div>
-  <!-- Teacher -->
-  <div *ngIf="UserType == 3 || UserType == 1" [ngClass]="['Menu',global.Active==Url.Management?'Menu-active':'']" [routerLink]="['/',Url.Management]" (click)="ActiveBtn()">
-    <div class="Menu-sub"><i class="material-icons">perm_data_setting</i> {{ 'Management' | lang }}</div>  
-  </div>
-  <!-- logout -->
-  <div class="Menu">
-      <div class="Menu-sub" (click)="Onlogout()"><i class="material-icons">lock_open</i> {{ 'Log Out'|lang}}</div>  
-  </div>
+<div *ngIf="UserType == 3" [ngClass]="['Menu',global.Active==Url.TeacherUsers?'Menu-active':'']" [routerLink]="['/',Url.TeacherUsers]" (click)="ActiveBtn()">
+  <div class="Menu-sub"><i class="material-icons">assignment_ind</i> {{ 'Users Student' | lang }}</div>  
+</div>
+<div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminLogUsers?'Menu-active':'']" [routerLink]="['/',Url.AdminLogUsers]" (click)="ActiveBtn()">
+    <div class="Menu-sub"><i class="material-icons">description</i> {{ 'Log Users'| lang}}</div>  
+</div>
+<div *ngIf="UserType == 1" [ngClass]="['Menu',global.Active==Url.AdminBin?'Menu-active':'']" [routerLink]="['/',Url.AdminBin]" (click)="ActiveBtn()">
+  <div class="Menu-sub"><i class="material-icons">delete</i> {{ 'Bin'| lang}}</div>  
+</div>
+<!-- Teacher -->
+<div *ngIf="UserType == 3 || UserType == 1" [ngClass]="['Menu',global.Active==Url.Management?'Menu-active':'']" [routerLink]="['/',Url.Management]" (click)="ActiveBtn()">
+  <div class="Menu-sub"><i class="material-icons">perm_data_setting</i> {{ 'Management' | lang }}</div>  
+</div>
+<div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherListQuiz?'Menu-active':'']" [routerLink]="['/',Url.TeacherListQuiz]" (click)="ActiveBtn()">
+    <div class="Menu-sub" ><i class="material-icons">playlist_add</i> {{ 'List Quiz'|lang}}</div>  
+</div>
+<div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherReport?'Menu-active':'']" [routerLink]="['/',Url.TeacherReport]" (click)="ActiveBtn()">
+    <div class="Menu-sub" ><i class="material-icons">view_list</i> {{ 'Report'|lang}}</div>  
+</div>
+<div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherStartQuiz?'Menu-active':'']" [routerLink]="['/',Url.TeacherStartQuiz]" (click)="ActiveBtn()">
+    <div class="Menu-sub"><i class="material-icons">query_builder</i> {{ 'Start Quiz'|lang}}</div>  
+</div>
+<div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherSetting?'Menu-active':'']" [routerLink]="['/',Url.TeacherSetting]" (click)="ActiveBtn()">
+    <div class="Menu-sub"><i class="material-icons">settings</i> {{ 'Setting'|lang}}</div>  
+</div>
+<!-- logout -->
+<div class="Menu">
+    <div class="Menu-sub"><i class="material-icons">lock_open</i> {{ 'Log Out'|lang}}</div>  
+</div>
+</div>
 </div>
