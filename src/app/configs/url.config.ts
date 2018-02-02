@@ -24,5 +24,8 @@ export const UrlConfig = {
     Signup: 'signup',
     Login: 'login',
 };
-export const baseUrl = environment.production? 'http://quickquiz.paramat.work/api':'http://localhost:51161/api';
-export const baseUrlimg = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:51161/';
+// export const baseUrl = environment.production? 'http://quickquiz.paramat.work/api':'http://localhost:51161/api';
+// export const baseUrlimg = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:51161/';
+
+export const baseUrl = 'http://quickquiz.paramat.work/api';
+export const baseUrlimg = 'http://quickquiz.paramat.work/';

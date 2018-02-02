@@ -48,6 +48,7 @@ import { TeacherListQuizComponent } from './pages/teacher-list-quiz/teacher-list
 import { TeacherReportComponent } from './pages/teacher-report/teacher-report.component';
 import { TeacherStartQuizComponent } from './pages/teacher-start-quiz/teacher-start-quiz.component';
 import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting.component';
+import { ModalCreateCodeComponent } from './components/modal-create-code/modal-create-code.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting
     TeacherListQuizComponent,
     TeacherReportComponent,
     TeacherStartQuizComponent,
-    TeacherSettingComponent
+    TeacherSettingComponent,
+    ModalCreateCodeComponent
   ],
   imports: [
     BrowserModule,

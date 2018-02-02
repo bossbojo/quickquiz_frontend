@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <button class="btn btn-primary btn-sm" (click)="OnOpenModalAdduser()">
-      <i class="material-icons">add_circle_outline</i> {{ 'Add user' | lang }}
+    <button class="btn btn-primary btn-sm" (click)="OpenModelCreateCode = true">
+      <i class="material-icons">add_circle_outline</i> {{ 'Add Quiz' | lang}}
     </button>
   </div>
 </div>
@@ -24,33 +24,23 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Username</th>
-              <th>Firstname</th>
-              <th class="moblie-table-hidden">Lastname</th>
-              <th class="moblie-table-hidden">Verify</th>
-              <th class="moblie-table-hidden">User type</th>
-              <th class="moblie-table-hidden">Status</th>
+              <th>ชื่อ Quiz</th>
+              <th>จำนวนในการ Quiz</th>
+              <th class="moblie-table-hidden">Code quiz</th>
+              <th class="moblie-table-hidden">จำนวนข้อทั้งหมด</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>A</td>
-              <td>B</td>
+              <td>1</td>
+              <td>s</td>
               <td>C</td>
               <td class="moblie-table-hidden">D</td>
               <td class="moblie-table-hidden">F</td>
-              <td class="moblie-table-hidden">G</td>
-              <td class="moblie-table-hidden">H</td>
               <td class="col-action">
                 <div class="moblie-table-hidden">
-                  <button class="btn btn-info btn-sm" *ngIf="UserAllDatas.Verify" (click)="OnShow()">
-                    <i class="material-icons action-icon">info</i> {{ 'Show' | lang }}
-                  </button>
-                  <button class="btn btn-sm" *ngIf="UserAllDatas.Verify" (click)="OnReset()" >
-                    <i class="material-icons action-icon">replay</i> {{ 'Reset' | lang }}
-                  </button>
-                  <button class="btn btn-danger btn-sm" (click)="OnRemove()" >
+                  <button class="btn btn-danger btn-sm" (click)="OnRemove()">
                     <i class="material-icons action-icon">clear</i> {{ 'Remove' | lang }}
                   </button>
                 </div>
@@ -67,7 +57,7 @@
                         </a>
                       </li>
                       <li>
-                        <a (click)="OnReset()" >
+                        <a (click)="OnReset()">
                           <i class="material-icons action-icon">replay</i> {{ 'Reset' | lang }}
                         </a>
                       </li>
@@ -88,3 +78,4 @@
     </div>
   </div>
 </div>
+<app-modal-create-code [(modal)]="OpenModelCreateCode"></app-modal-create-code>

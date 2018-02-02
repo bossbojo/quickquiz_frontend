@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-list-quiz.component.scss']
 })
 export class TeacherListQuizComponent implements OnInit {
-
+  OpenModelCreateCode:boolean = false;
   constructor() { }
 
   ngOnInit() {
+  }
+  
+  OnRefresh(e){
+    if(!e)
+      this.OpenModelCreateCode = e;
   }
 
 }
