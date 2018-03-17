@@ -1,0 +1,28 @@
+.modal-dialog {
+  width: 1200px;
+}
+
+.choose {
+  padding: 5px;
+}
+
+.question {
+  background-color: #8c8c8c;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.answer {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #c1c1c1;
+  color: white;
+}
+.show-question{
+    height: 800px;
+    overflow: auto;
+    border-right: 2px solid #33bbf1;
+}

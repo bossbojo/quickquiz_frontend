@@ -1,0 +1,212 @@
+<div class="modal fade" id="add-question" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-info">
+        <button type="button" class="close" (click)="OnClose()">&times;</button>
+        <h4 class="modal-title">
+          <i class="material-icons">add_circle_outline</i> {{ 'Add Question'|lang }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 text-center" *ngIf="Data">
+            <h2>Quiz name : {{Data.quick_name}}</h2>
+            <h2>Code Quiz : {{Data.code}}</h2>
+          </div>
+          <div class="col-md-6 ">
+            <h2>Show Question ({{DataQuiz.length}})</h2>
+            <div class="show-question"  id="style-5">
+              <div class="row" *ngFor="let DataQuizs of DataQuiz;let i = index">
+                <div class="col-md-12">
+                  <div class="question">{{i+1}} : {{DataQuizs.question}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="answer">A : {{ DataQuizs.Answers[0].answer}}
+                      <label *ngIf="DataQuizs.Answers[0].correct" style="color:#00ca00;">
+                        <i class="material-icons action-icon">check_circle</i>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="answer">A : {{ DataQuizs.Answers[1].answer}}
+                        <label *ngIf="DataQuizs.Answers[1].correct" style="color:#00ca00;">
+                          <i class="material-icons action-icon">check_circle</i>
+                        </label>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                      <div class="answer">A : {{ DataQuizs.Answers[2].answer}}
+                        <label *ngIf="DataQuizs.Answers[2].correct" style="color:#00ca00;">
+                          <i class="material-icons action-icon">check_circle</i>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="answer">A : {{ DataQuizs.Answers[3].answer}}
+                          <label *ngIf="DataQuizs.Answers[3].correct" style="color:#00ca00;">
+                            <i class="material-icons action-icon">check_circle</i>
+                          </label>
+                        </div>
+                      </div>
+                  </div>
+                <div class="text-right">
+                  <button class=" btn btn-success btn-sm" (click)="OnOpenEdit(DataQuizs)">
+                    <i class="material-icons action-icon">mode_edit</i> {{ 'Edit Question' | lang }}
+                  </button>
+                  <button class=" btn btn-danger btn-sm">
+                    <i class="material-icons action-icon">clear</i> {{ 'Remove' | lang }}
+                  </button>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="AddQuestion">
+            <h2>Add Question</h2>
+            <form [formGroup]="FormAddQuestion" (submit)="Onsubmit()">
+              <div class="form-group">
+                <label>{{'Question'|lang}}:</label>
+                <textarea type="text" class="form-control" row="4" placeholder="{{'Your question'|lang}}" formControlName="question"></textarea>
+                <validation [control]="FormAddQuestion.controls['question']"></validation>
+              </div>
+              <hr>
+              <div>
+                <div class="row">
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="1" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 1'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 1" formControlName="choice1">
+                        <validation [control]="FormAddQuestion.controls['choice1']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="2" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 2'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 2" formControlName="choice2">
+                        <validation [control]="FormAddQuestion.controls['choice2']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="3" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 3'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 3" formControlName="choice3">
+                        <validation [control]="FormAddQuestion.controls['choice3']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="4" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 4'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 4" formControlName="choice4">
+                        <validation [control]="FormAddQuestion.controls['choice4']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-right">
+                <hr>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6" *ngIf="EdisQuestion">
+            <h2>Edit Question</h2>
+            <form [formGroup]="FormAddQuestion" (submit)="OnsubmitEdit()">
+              <div class="form-group">
+                <label>{{'Question'|lang}}:</label>
+                <textarea type="text" class="form-control" row="4" placeholder="{{'Your question'|lang}}" formControlName="question"></textarea>
+                <validation [control]="FormAddQuestion.controls['question']"></validation>
+              </div>
+              <hr>
+              <div>
+                <div class="row">
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="1" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 1'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 1" formControlName="choice1">
+                        <validation [control]="FormAddQuestion.controls['choice1']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="2" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 2'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 2" formControlName="choice2">
+                        <validation [control]="FormAddQuestion.controls['choice2']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="3" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 3'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 3" formControlName="choice3">
+                        <validation [control]="FormAddQuestion.controls['choice3']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 choose">
+                    <div class="col-md-1">
+                      <input type="radio" name="correct" style="cursor: pointer;" value="4" formControlName="correct">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>{{'Choice 4'|lang}}:</label>
+                        <input type="text" class="form-control" placeholder="Choice 4" formControlName="choice4">
+                        <validation [control]="FormAddQuestion.controls['choice4']"></validation>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-right">
+                <hr>
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-danger" (click)="OnCloseEdit()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

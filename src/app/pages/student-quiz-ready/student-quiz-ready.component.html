@@ -1,20 +1,29 @@
 <div class="row font-color">
   <div class="col-md-4 col-md-offset-4">
     <div class="body-box shadow-show-box text-center text-uppercase">
-      <div id="input-code" >
-        <h2>Let start Quiz</h2>
-        <div class="form-group text-left">
-          <input type="text" class="form-control input-code" placeholder="Code's Quiz" maxlength="6">
+      <form [formGroup]="FormCode" (submit)="OnGoQuiz()">
+        <div id="input-code">
+          <h2>Let start Quiz</h2>
+          <div class="form-group text-left">
+            <input type="text" class="form-control input-code" placeholder="Code's Quiz" maxlength="10" formControlName="Code">
+          </div>
+          <button type="submit" class="btn text-uppercase btn-letgo">
+            <i class="material-icons">check</i> Let's go</button>
         </div>
-        <button class="btn text-uppercase btn-letgo" (click)="OnGoQuiz()"><i class="material-icons">check</i> Let's go</button>
-      </div>
+      </form>
       <div id="waing-code" style="display:none;">
-        <h2><img src="assets\img\success.png" width="60px"> waiting host</h2>
+        <h2>
+          <img src="assets\img\success.png" width="60px"> waiting host</h2>
         <div class="container-img">
           <img src="assets\img\Ripple.gif" width="150px">
-          <div class="center"><p class="countdown-number" id="revese-countdown">3</p></div>
+          <div class="center">
+            <p class="countdown-number" id="revese-countdown">3</p>
+          </div>
         </div>
-        <div><button class="btn text-uppercase btn-back" (click)="OnGoBack()" [disabled]="letstart"> <i class="material-icons">keyboard_backspace</i> Get Back</button></div>
+        <div>
+          <button class="btn text-uppercase btn-back" (click)="OnGoBack()" [disabled]="letstart">
+            <i class="material-icons">keyboard_backspace</i> Get Back</button>
+        </div>
       </div>
     </div>
   </div>

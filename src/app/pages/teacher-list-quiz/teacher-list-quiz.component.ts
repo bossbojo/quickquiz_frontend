@@ -1,3 +1,4 @@
+import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,15 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-list-quiz.component.scss']
 })
 export class TeacherListQuizComponent implements OnInit {
-  OpenModelCreateCode:boolean = false;
-  constructor() { }
+  OpenModelCreateCode: boolean = false;
+  OpenModelCreateQuestion:boolean = true;
+  Data:any;
+  DataQuestion:any;
+  constructor(private http:HttpService) {
+    this.GetData();
+   }
 
   ngOnInit() {
   }
-  
-  OnRefresh(e){
-    if(!e)
-      this.OpenModelCreateCode = e;
+  GetData(){
+    this.http.requestGet(`get/all/quiz`).subscribe((res:any)=>{
+      this.Data = res.data;
+    });
   }
-
+  OnRefresh(e) {
+    if (!e)
+      this.OpenModelCreateCode = e;
+      this.GetData();
+  }
+  OutPutData(event) {
+    this.GetData();
+    this.OpenModelCreateCode = false;
+    this.OnOpenQuestion(event);
+  }
+  OnOpenQuestion(data){
+    this.DataQuestion = data;
+    this.OpenModelCreateQuestion = true;
+  }
 }

@@ -1,3 +1,4 @@
+import { SignalRService } from './services/SignalR.service';
 import { Component, OnChanges } from '@angular/core';
 import { StorageConfog } from './configs/storage.config';
 import { AuthenticationService } from './services/authentication.service';
@@ -10,10 +11,11 @@ import { GlobalValueService } from './services/global-value.service';
 })
 export class AppComponent {
   NavberAdmin: boolean = false;
-  NavberStudent:boolean = false;
+  NavberStudent: boolean = false;
   title = 'app';
-  constructor(private AuthenSer: AuthenticationService, private route: Router, private global: GlobalValueService) {
+  constructor(private AuthenSer: AuthenticationService, private route: Router, private global: GlobalValueService,private signalr:SignalRService) {
     StorageConfog.setItem('lang', 'EN');
+    this.signalr.OnStartSignalR();
   }
   onGetComponent(e) {
     //this.global.ToggleSidebar();
@@ -27,15 +29,15 @@ export class AppComponent {
       $('#bodymain').removeClass('colorchange')
     }
     if (this.AuthenSer.getAuthenticated) {
-      if (StorageConfog.getItem('usertype') == 2){
+      if (StorageConfog.getItem('usertype') == 2) {
         this.NavberStudent = true;
-      }else{
+      } else {
         this.NavberAdmin = true;
-      }  
+      }
     }
   }
   OnHiddenSidebar() {
-    if(!this.global.OpenSideBar){
+    if (!this.global.OpenSideBar) {
       this.global.ToggleSidebar();
     }
 

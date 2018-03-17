@@ -1,0 +1,29 @@
+<div class="modal fade" id="add-code-quiz" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-primary">
+        <button type="button" class="close" (click)="Onclose()">&times;</button>
+        <h4 class="modal-title">
+          <i class="material-icons">add_circle_outline</i> {{ 'Add Quiz'|lang }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="FormAddQuiz" (submit)="Onsubmit()">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>{{'Name quiz'|lang}}:</label>
+                <input type="text" class="form-control" placeholder="{{'Name quiz'|lang}}" formControlName="nameQuiz">
+                <validation [control]="FormAddQuiz.controls['nameQuiz']"></validation>
+              </div>
+              <hr>
+              <div class="text-right">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { SignalRService } from './../../services/SignalR.service';
 import { Component, OnInit } from '@angular/core';
 import { dataquiz } from '../../morkdata/dataquiz';
 import { UrlConfig } from '../../configs/url.config';
@@ -18,7 +19,7 @@ export class StudentQuizStartComponent implements OnInit {
   timernow:number = 0;
   quiznow:number = 1;
   allquiz:allquiz[] = [];
-  constructor(private route:Router) {
+  constructor(private route:Router,private signalr:SignalRService) {
     this.morkdata = dataquiz;
     this.quizmax = this.morkdata.length;
     $('#bodymain').addClass('colorchangestudent');

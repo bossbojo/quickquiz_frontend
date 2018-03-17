@@ -1,3 +1,5 @@
+import { SignalRService } from './services/SignalR.service';
+
 //modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,6 +29,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ModalInfoUserComponent } from './components/modal-info-user/modal-info-user.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { ModalAddUserComponent } from './components/modal-add-user/modal-add-user.component';
+import { ModalCreateCodeComponent } from './pages/teacher-list-quiz/modal-create-code/modal-create-code.component';
+import { ModalCreateQuestionComponent } from './pages/teacher-list-quiz/modal-create-question/modal-create-question.component';
 //page
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -48,7 +52,6 @@ import { TeacherListQuizComponent } from './pages/teacher-list-quiz/teacher-list
 import { TeacherReportComponent } from './pages/teacher-report/teacher-report.component';
 import { TeacherStartQuizComponent } from './pages/teacher-start-quiz/teacher-start-quiz.component';
 import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting.component';
-import { ModalCreateCodeComponent } from './components/modal-create-code/modal-create-code.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import { ModalCreateCodeComponent } from './components/modal-create-code/modal-c
     //Directive
     ValidationDirective,
     //components
+    ModalCreateQuestionComponent,
     AppComponent,
     NavbarComponent,
     LoginComponent,
@@ -104,6 +108,7 @@ import { ModalCreateCodeComponent } from './components/modal-create-code/modal-c
     AcceptTeacherGuard,
     AuthenticationGuard,
     AllowAnonymousGuard,
+    SignalRService
   ],
   bootstrap: [AppComponent]
 })

@@ -20,27 +20,30 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
-        <table class="table-desktop">
+        <table class="table-desktop" *ngIf="Data">
           <thead>
             <tr>
               <th>#</th>
               <th>ชื่อ Quiz</th>
               <th>จำนวนในการ Quiz</th>
-              <th class="moblie-table-hidden">Code quiz</th>
+              <th>Code quiz</th>
               <th class="moblie-table-hidden">จำนวนข้อทั้งหมด</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>s</td>
-              <td>C</td>
-              <td class="moblie-table-hidden">D</td>
-              <td class="moblie-table-hidden">F</td>
+            <tr *ngFor="let Datas of Data">
+              <td>{{Datas.code_id}}</td>
+              <td>{{Datas.quick_name}}</td>
+              <td>{{Datas.count_quiz}}</td>
+              <td>{{Datas.code}}</td>
+              <td class="moblie-table-hidden">{{Datas.count_quiz}}</td>
               <td class="col-action">
                 <div class="moblie-table-hidden">
-                  <button class="btn btn-danger btn-sm" (click)="OnRemove()">
+                  <button class=" btn btn-success btn-sm" (click)="OnOpenQuestion(Datas)">
+                    <i class="material-icons action-icon">help</i> {{ 'Add Question' | lang }}
+                  </button>
+                  <button class=" btn btn-danger btn-sm" (click)="OnRemove()">
                     <i class="material-icons action-icon">clear</i> {{ 'Remove' | lang }}
                   </button>
                 </div>
@@ -78,4 +81,5 @@
     </div>
   </div>
 </div>
-<app-modal-create-code [(modal)]="OpenModelCreateCode"></app-modal-create-code>
+<app-modal-create-code *ngIf="OpenModelCreateCode" [(modal)]="OpenModelCreateCode" (Data)="OutPutData($event)"></app-modal-create-code>
+<app-modal-create-question *ngIf="OpenModelCreateQuestion" [(modal)]="OpenModelCreateQuestion" [Data]="DataQuestion"></app-modal-create-question>
