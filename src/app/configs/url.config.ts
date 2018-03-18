@@ -24,9 +24,10 @@ export const UrlConfig = {
     Signup: 'signup',
     Login: 'login',
 };
-export const baseUrlsignalr = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
-export const baseUrl = environment.production? 'http://quickquiz.paramat.work/api':'http://localhost:50262/api';
-export const baseUrlimg = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
+// export const baseUrlsignalr = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
+// export const baseUrl = environment.production? 'http://quickquiz.paramat.work/api':'http://localhost:50262/api';
+// export const baseUrlimg = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
 
-// export const baseUrl = 'http://quickquiz.paramat.work/api';
-// export const baseUrlimg = 'http://quickquiz.paramat.work/';
+export const baseUrl = 'http://quickquiz.paramat.work/api';
+export const baseUrlimg = 'http://quickquiz.paramat.work/';
+export const baseUrlsignalr = 'http://quickquiz.paramat.work/';

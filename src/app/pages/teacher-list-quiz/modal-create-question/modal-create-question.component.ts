@@ -25,11 +25,13 @@ export class ModalCreateQuestionComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.modal && this.Data) {
-      $('#add-question').modal();
+      $('#add-question-new').modal();
       this.GetDataAll();
+    } else {
+      $('#add-question-new').modal('hide');
     }
   }
-  SetFormGroup(){
+  SetFormGroup() {
     this.FormAddQuestion = this.build.group({
       question: ['', [Validators.required]],
       choice1: ['', [Validators.required]],
@@ -41,11 +43,12 @@ export class ModalCreateQuestionComponent implements OnChanges {
   }
   GetDataAll() {
     this.http.requestGet(`get/all/quizandanwser?code_id=${this.Data.code_id}`).subscribe((res: any) => {
+      //console.log(res);
       this.DataQuiz = res.data;
     });
   }
   OnClose() {
-    $('#add-question').modal('hide');
+    $('#add-question-new').modal('hide');
     this.modalChange.emit(false);
   }
   Onsubmit() {
@@ -62,6 +65,8 @@ export class ModalCreateQuestionComponent implements OnChanges {
     }
     this.http.requestPost(`create/quiz/question`, obj).subscribe((res: any) => {
       if (res.data) {
+        console.log(res);
+
         this.FormAddQuestion.reset();
         this.GetDataAll();
       }
@@ -92,28 +97,28 @@ export class ModalCreateQuestionComponent implements OnChanges {
       code_id: this.Data.code_id,
       img: '',
       user_id: this.User.user_id,
-      question_id:this.DataEdit.q_id,
+      question_id: this.DataEdit.q_id,
       question: this.FormAddQuestion.controls['question'].value,
-      choice1_id:this.DataEdit.Answers[0].a_id,
+      choice1_id: this.DataEdit.Answers[0].a_id,
       choice1: this.FormAddQuestion.controls['choice1'].value,
-      choice2_id:this.DataEdit.Answers[1].a_id,
+      choice2_id: this.DataEdit.Answers[1].a_id,
       choice2: this.FormAddQuestion.controls['choice2'].value,
-      choice3_id:this.DataEdit.Answers[2].a_id,
+      choice3_id: this.DataEdit.Answers[2].a_id,
       choice3: this.FormAddQuestion.controls['choice3'].value,
-      choice4_id:this.DataEdit.Answers[3].a_id,
+      choice4_id: this.DataEdit.Answers[3].a_id,
       choice4: this.FormAddQuestion.controls['choice4'].value,
       correct: this.FormAddQuestion.controls['correct'].value
     }
-    console.log(obj);    
+    console.log(obj);
     this.http.requestPut(`update/quiz/question`, obj).subscribe((res: any) => {
-    //console.log(res);
+      console.log(res);
       if (res.data) {
         this.OnCloseEdit();
         this.GetDataAll();
       }
     });
   }
-  OnCloseEdit(){
+  OnCloseEdit() {
     this.AddQuestion = true;
     this.EdisQuestion = false;
     this.SetFormGroup();

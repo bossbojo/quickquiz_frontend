@@ -17,15 +17,7 @@ export class SignalRService {
             this.connection = $.connection;
             this.connection.hub.url = this.signalURL;
             this.hub = this.connection.hub.proxies['quizhub'];
-            // this.hub.client.onStartQuiz = (res) => {
-            //     console.log(res);
-            // }
         }, 1000);
-    }
-    OnReturnReady(){
-        return new Promise((resolve)=>{
-            
-        });
     }
     OnStartQuiz(user_id, code) {
         this.connection.hub.start().done(() => {

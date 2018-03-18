@@ -1,7 +1,7 @@
-<div class="modal fade" id="add-question" data-backdrop="static">
+<div class="modal fade" id="add-question-new" data-backdrop="static" >
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header-info">
+      <div class="modal-header-success">
         <button type="button" class="close" (click)="OnClose()">&times;</button>
         <h4 class="modal-title">
           <i class="material-icons">add_circle_outline</i> {{ 'Add Question'|lang }}
@@ -9,11 +9,11 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-12 text-center" *ngIf="Data">
+          <div class="col-md-12 text-center">
             <h2>Quiz name : {{Data.quick_name}}</h2>
             <h2>Code Quiz : {{Data.code}}</h2>
           </div>
-          <div class="col-md-6 ">
+          <div class="col-md-6 " *ngIf="DataQuiz">
             <h2>Show Question ({{DataQuiz.length}})</h2>
             <div class="show-question"  id="style-5">
               <div class="row" *ngFor="let DataQuizs of DataQuiz;let i = index">
@@ -29,7 +29,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                      <div class="answer">A : {{ DataQuizs.Answers[1].answer}}
+                      <div class="answer">B : {{ DataQuizs.Answers[1].answer}}
                         <label *ngIf="DataQuizs.Answers[1].correct" style="color:#00ca00;">
                           <i class="material-icons action-icon">check_circle</i>
                         </label>
@@ -38,14 +38,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                      <div class="answer">A : {{ DataQuizs.Answers[2].answer}}
+                      <div class="answer">C : {{ DataQuizs.Answers[2].answer}}
                         <label *ngIf="DataQuizs.Answers[2].correct" style="color:#00ca00;">
                           <i class="material-icons action-icon">check_circle</i>
                         </label>
                       </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="answer">A : {{ DataQuizs.Answers[3].answer}}
+                        <div class="answer">D : {{ DataQuizs.Answers[3].answer}}
                           <label *ngIf="DataQuizs.Answers[3].correct" style="color:#00ca00;">
                             <i class="material-icons action-icon">check_circle</i>
                           </label>

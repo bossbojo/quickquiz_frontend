@@ -18,16 +18,20 @@ export class StudentProfileComponent implements OnInit {
     $('#bodymain').addClass('colorchangestudent')
     this.User = StorageConfog.getItem('user');
     this.OnGetInfo();
+    this.GetDataQuizHistory();
    }
 
   ngOnInit() {
   }
   OnGetInfo(){
     this.http.requestGet(`get/user/byid?id=${this.User.user_id}`).subscribe((res)=>{
-      this.profile = res.data
-      console.log(this.profile);
-       
+      this.profile = res.data 
       this.image = `${baseUrlimg}/Image/${this.profile.Image}`
+    });
+  }
+  GetDataQuizHistory(){
+    this.http.requestGet(`get/data/all/quiz_history`).subscribe((res:any)=>{
+      this.QuizList = res.data;
     });
   }
 

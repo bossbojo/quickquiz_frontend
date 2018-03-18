@@ -10,7 +10,7 @@ export class AuthenticationService {
     private authorizationDetail: string = 'user'; 
     private authorizationType: string = 'usertype'; 
     private authenticated: string;
-    private authenticatedDetail: string;
+    public authenticatedDetail: string;
     private authenticatedType: string;
     constructor(private route:Router){}
     // get realtime authenticated : แสดงข้อมูล authenticated เมื่อมี event เกิดขึ้น

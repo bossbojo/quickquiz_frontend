@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherListQuizComponent implements OnInit {
   OpenModelCreateCode: boolean = false;
-  OpenModelCreateQuestion:boolean = true;
+  OpenModelCreateQuestion:boolean = false;
+  OpenModelReport:boolean = false;
+  DataReport:any;
   Data:any;
   DataQuestion:any;
   constructor(private http:HttpService) {
@@ -32,8 +34,25 @@ export class TeacherListQuizComponent implements OnInit {
     this.OpenModelCreateCode = false;
     this.OnOpenQuestion(event);
   }
+  OnOpenReport(data){
+    this.DataReport = data;
+    this.OpenModelReport = true;
+  }
   OnOpenQuestion(data){
     this.DataQuestion = data;
     this.OpenModelCreateQuestion = true;
+  }
+  OncloseMode(e){
+    this.DataQuestion = null;
+    this.OpenModelCreateCode = false;
+    this.OpenModelReport = false;
+    this.OpenModelCreateQuestion = false;
+  }
+  OnRemove(code_id){
+    this.http.requestDelete(`remove/quiz/code?value=${code_id}`).subscribe((res:any)=>{
+      if(res.data){
+        this.GetData();
+      }
+    });
   }
 }

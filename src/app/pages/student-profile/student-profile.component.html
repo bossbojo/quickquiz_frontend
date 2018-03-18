@@ -33,26 +33,26 @@
     </div>
   </div>
 </div>
-<div class="row" >
+<div class="row" *ngIf="QuizList">
   <ng-container *ngFor="let QuizLists of QuizList">
     <div class="col-md-3 box-show">
       <div class="body-box">
         <div class="col-md-6">
           <p class="code-show">
             <span class="font-profile">
-              <b>SW00D{{ QuizLists }}</b>
+              <b>{{ QuizLists.code }}</b>
             </span>
           </p>
         </div>
         <div class="col-md-6">
           <p class="font-profile" align="right">
-              {{ QuizLists }}0/100 point
+              {{ QuizLists.point }}/{{ QuizLists.quiz_limit }} point
           </p>
           <p class="font-profile-small" align="right">
-            Use time 49.00 minute
+            Use time {{ QuizLists.time }}
           </p>
           <p class="font-profile-small" align="right">
-            time test 0{{ QuizLists }}/2/2018
+            time test {{ QuizLists.create_dt | date:'dd/MM/yyyy'}}
           </p>
         </div>
       </div>

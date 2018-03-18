@@ -1,3 +1,5 @@
+import { DatePipe } from '@angular/common';
+import { ReportComponent } from './pages/teacher-list-quiz/report/report.component';
 import { SignalRService } from './services/SignalR.service';
 
 //modules
@@ -84,6 +86,7 @@ import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting
     StudentSettingComponent,
     TeacherListQuizComponent,
     TeacherReportComponent,
+    ReportComponent,
     TeacherStartQuizComponent,
     TeacherSettingComponent,
     ModalCreateCodeComponent
@@ -108,6 +111,7 @@ import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting
     AcceptTeacherGuard,
     AuthenticationGuard,
     AllowAnonymousGuard,
+    DatePipe,
     SignalRService
   ],
   bootstrap: [AppComponent]

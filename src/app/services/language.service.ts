@@ -39,7 +39,7 @@ export class LanguageService {
     }
 
     // Check language storage : ตรวจสอบข้อมูลของ storage ว่ามีภาษาอยู่แล้วหรือไม่ถ้าไม่มีก็ set ค่า default ให้กับภาษา
-    private processStorageLanguage(defaultLanguage: string = 'th') {
+    private processStorageLanguage(defaultLanguage: string = 'TH') {
         if (!this.getLanguageStorage)
             this.setLanguageStorage(defaultLanguage);
     }

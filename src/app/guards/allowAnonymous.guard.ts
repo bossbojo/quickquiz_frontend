@@ -17,5 +17,4 @@ export class AllowAnonymousGuard implements CanActivate {
         }
         return true;
     }
-
 }

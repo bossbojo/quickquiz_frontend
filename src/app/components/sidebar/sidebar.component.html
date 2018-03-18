@@ -23,9 +23,9 @@
 <div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherListQuiz?'Menu-active':'']" [routerLink]="['/',Url.TeacherListQuiz]" (click)="ActiveBtn()">
     <div class="Menu-sub" ><i class="material-icons">playlist_add</i> {{ 'List Quiz'|lang}}</div>  
 </div>
-<div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherReport?'Menu-active':'']" [routerLink]="['/',Url.TeacherReport]" (click)="ActiveBtn()">
+<!-- <div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherReport?'Menu-active':'']" [routerLink]="['/',Url.TeacherReport]" (click)="ActiveBtn()">
     <div class="Menu-sub" ><i class="material-icons">view_list</i> {{ 'Report'|lang}}</div>  
-</div>
+</div> -->
 <div *ngIf="UserType == 3" class="Menu" [ngClass]="['Menu',global.Active==Url.TeacherStartQuiz?'Menu-active':'']" [routerLink]="['/',Url.TeacherStartQuiz]" (click)="ActiveBtn()">
     <div class="Menu-sub"><i class="material-icons">query_builder</i> {{ 'Start Quiz'|lang}}</div>  
 </div>

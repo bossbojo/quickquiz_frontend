@@ -14,7 +14,7 @@ export class AppComponent {
   NavberStudent: boolean = false;
   title = 'app';
   constructor(private AuthenSer: AuthenticationService, private route: Router, private global: GlobalValueService,private signalr:SignalRService) {
-    StorageConfog.setItem('lang', 'EN');
+    StorageConfog.setItem('lang', 'TH');
     this.signalr.OnStartSignalR();
   }
   onGetComponent(e) {
