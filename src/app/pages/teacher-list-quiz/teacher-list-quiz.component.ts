@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherListQuizComponent implements OnInit {
   OpenModelCreateCode: boolean = false;
-  OpenModelCreateQuestion:boolean = false;
+  OpenModelCreateQuestion:boolean = true;
   OpenModelReport:boolean = false;
   DataReport:any;
   Data:any;

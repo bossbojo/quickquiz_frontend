@@ -50,3 +50,27 @@
     background-color: #aaaaaa;
     color: #000000;
 }
+.change-password{
+  cursor: pointer;
+  color: white;
+}
+.margin-top{
+  margin-top:150px;
+}
+@media screen and (max-width: 1200px) {
+  .margin-top{
+    margin-top:50px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .margin-top{
+    margin-top:10px;
+  }
+}
+.form-group.has-error .material-icons {
+  position: absolute;
+  top: 55px !important;
+  right: 7px;
+  color: #EF5350;
+  font-size: 19px;
+}

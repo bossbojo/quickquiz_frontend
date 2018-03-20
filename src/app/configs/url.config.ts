@@ -1,7 +1,7 @@
 import { environment } from "../../environments/environment";
 
 
-
+const production = true;
 export const UrlConfig = {
     Home: '',
     Management: 'management',
@@ -24,10 +24,8 @@ export const UrlConfig = {
     Signup: 'signup',
     Login: 'login',
 };
-// export const baseUrlsignalr = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
-// export const baseUrl = environment.production? 'http://quickquiz.paramat.work/api':'http://localhost:50262/api';
-// export const baseUrlimg = environment.production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
+export const baseUrlsignalr = production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
+export const baseUrl = production? 'http://quickquiz.paramat.work/api':'http://localhost:50262/api';
+export const baseUrlimg = production? 'http://quickquiz.paramat.work/':'http://localhost:50262/';
+export const baseUrlimg2 = production? 'http://quickquiz.paramat.work/Image':'http://localhost:50262/Image';
 
-export const baseUrl = 'http://quickquiz.paramat.work/api';
-export const baseUrlimg = 'http://quickquiz.paramat.work/';
-export const baseUrlsignalr = 'http://quickquiz.paramat.work/';

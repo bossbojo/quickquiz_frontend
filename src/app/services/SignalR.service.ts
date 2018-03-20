@@ -15,8 +15,9 @@ export class SignalRService {
     OnStartSignalR() {
         setTimeout(() => {
             this.connection = $.connection;
+            let connection = $.connection;
             this.connection.hub.url = this.signalURL;
-            this.hub = this.connection.hub.proxies['quizhub'];
+            this.hub = this.connection['quizHub'];
         }, 1000);
     }
     OnStartQuiz(user_id, code) {

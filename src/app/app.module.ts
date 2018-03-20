@@ -1,3 +1,4 @@
+import { ChangePasswordComponent } from './pages/student-setting/change-password/change-password.component';
 import { DatePipe } from '@angular/common';
 import { ReportComponent } from './pages/teacher-list-quiz/report/report.component';
 import { SignalRService } from './services/SignalR.service';
@@ -61,6 +62,7 @@ import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting
     //Directive
     ValidationDirective,
     //components
+    ChangePasswordComponent,
     ModalCreateQuestionComponent,
     AppComponent,
     NavbarComponent,

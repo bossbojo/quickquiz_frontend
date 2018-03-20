@@ -48,14 +48,6 @@
               <div>
                 <hr>
               </div>
-              <button class="btn btn-danger" (click)="OnLocked()">
-                <ng-container *ngIf="Locked">
-                  <i class="material-icons">lock_open</i> UnLock room
-                </ng-container>
-                <ng-container *ngIf="!Locked">
-                  <i class="material-icons">lock</i> Lock room
-                </ng-container>
-              </button>
               <button class="btn btn-success" (click)="OnStartQuiz()">
                 <i class="material-icons">done</i> Let's Start</button>
             </div>

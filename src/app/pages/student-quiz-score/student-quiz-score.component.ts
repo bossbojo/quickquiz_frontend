@@ -13,7 +13,7 @@ export class StudentQuizScoreComponent implements OnInit {
   Score:any;
   ScoreLimit:any;
   TimeQuiz:any;
-
+  Data:any;
   constructor(private param: ActivatedRoute, private http:HttpService,private route:Router) {
     $('#bodymain').addClass('colorchangestudent');
     this.param.queryParams
@@ -31,6 +31,8 @@ export class StudentQuizScoreComponent implements OnInit {
   GetSco(Id, time) {
     this.http.requestPut(`update/quiz_history/finish?id=${Id}&time=${time}`,{})
     .subscribe((res:any)=>{
+     // console.log(res.data);
+      this.Data = res.data;
       if(res.data){
         this.Score = res.data.point;
         this.ScoreLimit = res.data.quiz_limit;

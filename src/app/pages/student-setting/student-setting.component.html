@@ -1,50 +1,39 @@
-<div class="col-md-8 col-md-offset-2 font-profile box-show">
+<div class="col-md-8 col-md-offset-2 font-profile box-show margin-top">
   <div class="body-box">
-    <div class="col-md-4 container-col" align="center">
-      <div class="center">
-        <label for="file-img" class="btn-bowser">bowser</label>
-        <input type="file" name="" id="file-img" style="display:none;" (change)="onFileChange($event)" accept="image/*">
-      </div>
-      <img width="250px" height="250px" style="object-fit: cover;" src="{{image}}">
-    </div>
-    <div class="col-md-8">
-      <div class="font-profile-h1">
-        <div class="form-group">
-          <label>{{ 'First name' | lang}}:</label>
-          <input type="text" class="form-control" placeholder="" value="Paramat">
+    <form [formGroup]="FormSetting" (submit)="OnSubmit()">
+      <div class="col-md-4 container-col" align="center">
+        <div class="center">
+          <label for="file-img" class="btn-bowser">bowser</label>
+          <input type="file" name="" id="file-img" style="display:none;" (change)="onFileChange($event)" accept="image/*">
         </div>
-        <div class="form-group">
-          <label>{{ 'Last name' | lang}}:</label>
-          <input type="text" class="form-control" placeholder="" value="Singkon">
+        <img width="250px" height="250px" style="object-fit: cover;" src="{{image}}" *ngIf="!imageBase64">
+        <img width="250px" height="250px" style="object-fit: cover;" src="{{imageBase64}}" *ngIf="imageBase64">
+      </div>
+      <div class="col-md-8">
+        <div class="font-profile-h1">
+          <div class="form-group">
+            <label>{{ 'First name' | lang}}:</label>
+            <input type="text" class="form-control" placeholder="First name" formControlName="firstname">
+          </div>
+          <div class="form-group">
+            <label>{{ 'Last name' | lang}}:</label>
+            <input type="text" class="form-control" placeholder="Last name" formControlName="lastname">
+          </div>
+        </div>
+        <div>
+          <a class="change-password" (click)="OpenChangePass=true">
+            <i class="material-icons">lock</i> Change password</a>
         </div>
       </div>
-    </div>
-    <div class="col-md-12">
-      <hr>
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-      <div class="form-group">
-        <label>{{ 'Username' | lang}}: 5611405545</label>
+      <div class="col-md-12">
+        <hr>
       </div>
-      <div class="form-group">
-        <label>{{ 'Old Password' | lang}}:</label>
-        <input type="Pass" class="form-control" placeholder="Password">
+      <div class="col-md-12" align="right">
+        <button type="submit" class="btn btn-success btn-save">
+          <i class="material-icons">save</i> Save
+        </button>
       </div>
-      <div class="form-group">
-        <label>{{ 'New Password' | lang}}:</label>
-        <input type="Pass" class="form-control" placeholder="Password">
-      </div>
-      <div class="form-group">
-        <label>{{ 'Password Confirm' | lang}}:</label>
-        <input type="text" class="form-control" placeholder="Password Confirm">
-      </div>
-    </div>
-    <div class="col-md-12">
-      <hr>
-    </div>
-    <div class="col-md-12" align="right">
-      <button class="btn btn-success btn-save">
-        <i class="material-icons">save</i> Save</button>
-    </div>
+    </form>
   </div>
 </div>
+<app-change-password *ngIf="OpenChangePass" [(OpenClose)]="OpenChangePass"></app-change-password>

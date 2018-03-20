@@ -1,3 +1,4 @@
+import { baseUrlimg2 } from './../../configs/url.config';
 import { HttpService } from './../../services/http.service';
 import { SignalRService } from './../../services/SignalR.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,26 +24,36 @@ export class StudentQuizStartComponent implements OnInit {
   allquiz: allquiz[] = [];
   CodeNow: any;
   QHisIdNow: any;
+  baseUrlimg2 = baseUrlimg2;
   constructor(private route: Router, private signalr: SignalRService, private http: HttpService, private param: ActivatedRoute) {
     $('#bodymain').addClass('colorchangestudent');
     this.param.queryParams
       .subscribe(params => {
-        if(params){
+        if (params) {
           this.GetDataByCode(params.data);
           this.CodeNow = params.data;
           this.QHisIdNow = params.his_id;
-        }else{
-          this.route.navigate(['/',UrlConfig.StudentQuizReady]);
+        } else {
+          this.route.navigate(['/', UrlConfig.StudentQuizReady]);
         }
       });
   }
-
+  shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
   ngOnInit() {
     this.timer();
   }
   GetDataByCode(code) {
     this.http.requestGet(`get/all/quizandanwser/stu?code=${code}`).subscribe((res: any) => {
       this.DataReal = res.data;
+      for (let i = 0; i < this.DataReal.length; i++) {
+        this.DataReal[i].Answers = this.shuffle(this.DataReal[i].Answers);
+      }
       this.quizmax = this.DataReal.length;
     })
   }
@@ -55,7 +66,7 @@ export class StudentQuizStartComponent implements OnInit {
         "a_id": a,
         "code": this.CodeNow
       }).subscribe((res: any) => {
-        this.route.navigate(['/', UrlConfig.StudentQuizScore], { queryParams: { id: this.QHisIdNow, time:$('#timeQuiz').text()} });
+        this.route.navigate(['/', UrlConfig.StudentQuizScore], { queryParams: { id: this.QHisIdNow, time: $('#timeQuiz').text() } });
       });
     } else {
       this.http.requestPost(`create/answers_history`, {

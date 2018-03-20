@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-12">
     <ng-container *ngIf="OpenAddUser">
       <app-modal-add-user [(modal)]="OpenAddUser" (Refresh)="OnRefresh($event)"></app-modal-add-user>
     </ng-container>
@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-12 text-right">
     <form>
-      <div class="col-md-2 col-md-offset-9">
+      <div class="col-md-2 col-md-offset-10">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Username search...">
         </div>
@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
         <table class="table-desktop">
