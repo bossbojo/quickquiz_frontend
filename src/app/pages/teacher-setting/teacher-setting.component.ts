@@ -34,7 +34,7 @@ export class TeacherSettingComponent implements OnInit {
   SetFormSetting(){
     this.OnGetInfo();
     this.FormSetting = this.build.group({
-        "img":['',[Validators.required]],
+        "img":[''],
         "firstname":[this.User.firstname,[Validators.required]],
         "lastname":[this.User.lastname,[Validators.required]]
     });
@@ -62,16 +62,25 @@ export class TeacherSettingComponent implements OnInit {
   }
   OnSubmit(){
     if(this.FormSetting.valid){
+      this.Global.OnShowLoading();
       this.http.requestPut(`edit/prifile`,this.FormSetting.value).subscribe((res:any)=>{
         if(res.data){
           jalert('Success','success for edit profile');
           this.OnGetInfo();
         }
-      },err => jalert('Warning','failed for edit profile'));
+        this.Global.OnHiddenLoading();
+      },err => {
+        this.Global.OnHiddenLoading();
+        jalert('Warning','failed for edit profile')
+      });
+    }else{
+      this.Global.OnHiddenLoading();
+      jalert('Warning','Check your input.')
     }
   }
   OnSubmitPass() {
     if (this.FormChangePass.valid) {
+      this.Global.OnShowLoading();
       if (this.FormChangePass.controls['new_password'].value == this.FormChangePass.controls['confirm_password'].value) {
         this.http.requestPut(`change/password`, {
           "old_password": this.FormChangePass.controls['old_password'].value,
@@ -81,10 +90,13 @@ export class TeacherSettingComponent implements OnInit {
             jalert('Success', 'success for change password')
             this.FormChangePass.reset();
           }
+          this.Global.OnHiddenLoading();
         }, err => {
+          this.Global.OnHiddenLoading();
           jalert('Warning', err.data.Message)
         });
       } else {
+        this.Global.OnHiddenLoading();
         jalert('Warning', 'new password and confirm password not macth.')
       }
     } else {

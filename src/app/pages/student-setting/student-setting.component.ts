@@ -26,7 +26,7 @@ export class StudentSettingComponent implements OnInit {
   SetFormSetting(){
     this.OnGetInfo();
     this.FormSetting = this.build.group({
-        "img":['',[Validators.required]],
+        "img":[''],
         "firstname":[this.User.firstname,[Validators.required]],
         "lastname":[this.User.lastname,[Validators.required]]
     });
@@ -56,12 +56,16 @@ export class StudentSettingComponent implements OnInit {
   }
   OnSubmit(){
     if(this.FormSetting.valid){
+      this.Global.OnShowLoading();
       this.http.requestPut(`edit/prifile`,this.FormSetting.value).subscribe((res:any)=>{
         if(res.data){
           jalert('Success','success for edit profile');
           this.OnGetInfo();
         }
-      },err => jalert('Warning','failed for edit profile'));
+        this.Global.OnHiddenLoading();
+      },err => {
+        this.Global.OnHiddenLoading()
+        jalert('Warning',err.data.Message)});
     }
   }
 }
