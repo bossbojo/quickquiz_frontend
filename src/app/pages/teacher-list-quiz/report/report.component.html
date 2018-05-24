@@ -1,42 +1,58 @@
 <div class="modal fade" id="add-report-quiz" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header-info">
-          <button type="button" class="close" (click)="OnClose()">&times;</button>
-          <h4 class="modal-title">
-            <i class="material-icons">add_circle_outline</i> {{ 'Report for '|lang }} {{Data.code}}
-          </h4>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-info">
+        <button type="button" class="close" (click)="OnClose()">&times;</button>
+        <h4 class="modal-title">
+          <i class="material-icons">add_circle_outline</i> {{ 'Report for '|lang }} {{Data.code}}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <form [formGroup]="FromTo" >
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="dateForm">Form</label>
+                <input type="date" class="form-control" id="dateForm" formControlName="From" (change)="OnSearchDate()">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="dateTo">To</label>
+                <input type="date" class="form-control" id="dateTo" formControlName="To" (change)="OnSearchDate()">
+              </div>
+            </div>
+          </form>
+          <div class="col-md-6 text-right">
+            <button class="btn btn-info" (click)="ExportPDF()">
+              <i class="material-icons">arrow_downward</i> Export PDF</button>
+            <button class="btn btn-warning" (click)="ExportFile()">
+              <i class="material-icons">arrow_downward</i> Export CSV</button>
+          </div>
         </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-md-12 text-right">
-                  <h4 class="dowload" (click)="ExportFile()"><img src="assets/img/export-csv.png" width="25px"> ดาวโหลดไฟล์</h4>
-                </div>
-              </div>
-              <div class="row">
-                <table class="table-desktop" *ngIf="Data">
-                    <thead>
-                      <tr>
-                        <th>Code quiz</th>
-                        <th>ผู้ใช้งาน</th>
-                        <th>ชื่อ-สกุล</th>
-                        <th>คะเเนน</th>
-                        <th>วันที่/เดือน/ปี</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let Reports of Report">
-                        <td>{{Reports.code}}</td>
-                        <td>{{Reports.username}}</td>
-                        <td>{{Reports.firstname}} {{Reports.lastname}}</td>
-                        <td>{{Reports.point}}/{{Reports.quiz_limit}}</td>
-                        <td>{{Reports.create_dt | date: 'dd/MM/yyyy'}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
+        <div class="row"  id="reportTable">
+          <table class="table-desktop" *ngIf="Data" >
+            <thead>
+              <tr>
+                <th>Code quiz</th>
+                <th>ผู้ใช้งาน</th>
+                <th>ชื่อ-สกุล</th>
+                <th>คะเเนน</th>
+                <th>วันที่/เดือน/ปี</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let Reports of Report" style="background-color: #ffffff">
+                <td>{{Reports.code}}</td>
+                <td>{{Reports.username}}</td>
+                <td>{{Reports.firstname}} {{Reports.lastname}}</td>
+                <td>{{Reports.point}}/{{Reports.quiz_limit}}</td>
+                <td>{{Reports.create_dt | date: 'dd/MM/yyyy'}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

@@ -30,7 +30,8 @@
         "../node_modules/popper.js/dist/umd/popper.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/jquery-confirm/dist/jquery-confirm.min.js",
-        "./assets/lib/jquery.animateNumber.min.js"
+        "./assets/lib/jquery.animateNumber.min.js",
+        "../node_modules/jspdf/dist/jspdf.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

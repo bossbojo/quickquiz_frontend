@@ -1,7 +1,7 @@
 import { environment } from "../../environments/environment";
 
 
-const production = true;
+const production = false;
 export const UrlConfig = {
     Home: '',
     Management: 'management',
