@@ -4,6 +4,7 @@ import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { jalert } from '../../../configs/alert.config';
 import { baseUrlimg2 } from '../../../configs/url.config';
+import { EILSEQ } from 'constants';
 
 @Component({
   selector: 'app-modal-create-question',
@@ -39,6 +40,8 @@ export class ModalCreateQuestionComponent implements OnChanges {
   SetFormGroup() {
     this.FormAddQuestion = this.build.group({
       question: ['', [Validators.required]],
+      type: ['NO', [Validators.required]],
+      link:'',
       choice1: ['', [Validators.required]],
       choice2: ['', [Validators.required]],
       choice3: ['', [Validators.required]],
@@ -71,30 +74,37 @@ export class ModalCreateQuestionComponent implements OnChanges {
   }
   Onsubmit() {
     if (this.FormAddQuestion.valid) {
+      if(this.FormAddQuestion.controls['type'].value == 'LI'){
+        let url =  this.FormAddQuestion.controls['link'].value.split('/');
+        this.imageBase64 = 'https://www.youtube.com/embed/' + url[url.length-1]
+      }
       let obj = {
         code_id: this.Data.code_id,
         img: this.imageBase64 ? this.imageBase64 : '',
+        typefile : this.FormAddQuestion.controls['type'].value,
         user_id: this.User.user_id,
         question: this.FormAddQuestion.controls['question'].value,
         choice1: this.FormAddQuestion.controls['choice1'].value,
         choice2: this.FormAddQuestion.controls['choice2'].value,
         choice3: this.FormAddQuestion.controls['choice3'].value,
         choice4: this.FormAddQuestion.controls['choice4'].value,
-        correct: this.FormAddQuestion.controls['correct'].value
+        correct: parseInt( this.FormAddQuestion.controls['correct'].value)
       }
       this.http.requestPost(`create/quiz/question`, obj).subscribe((res: any) => {
         if (res.data) {
-          console.log(res);
-
           this.FormAddQuestion.reset();
           this.GetDataAll();
         }
-      });
+      },(err => {
+        jalert('Warning',err.data.Message)
+      }));
     } else {
       jalert('Warning', 'Check your input.')
     }
   }
   OnOpenEdit(data) {
+    console.log(data);
+    
     this.imageShow = null;
     this.imageBase64 = null;
     this.DataEdit = data;
@@ -104,22 +114,41 @@ export class ModalCreateQuestionComponent implements OnChanges {
         correctchoice = i + 1;
       }
     }
-    this.FormAddQuestion = this.build.group({
-      question: [this.DataEdit.question, [Validators.required]],
-      choice1: [this.DataEdit.Answers[0].answer, [Validators.required]],
-      choice2: [this.DataEdit.Answers[1].answer, [Validators.required]],
-      choice3: [this.DataEdit.Answers[2].answer, [Validators.required]],
-      choice4: [this.DataEdit.Answers[3].answer, [Validators.required]],
-      correct: [correctchoice + '', [Validators.required]]
-    });
+    if(this.DataEdit.typefile == 'IM' || this.DataEdit.typefile == 'NO'){
+      this.FormAddQuestion = this.build.group({
+        question: [this.DataEdit.question, [Validators.required]],
+        type: this.DataEdit.typefile ? this.DataEdit.typefile : 'NO',
+        choice1: [this.DataEdit.Answers[0].answer, [Validators.required]],
+        choice2: [this.DataEdit.Answers[1].answer, [Validators.required]],
+        choice3: [this.DataEdit.Answers[2].answer, [Validators.required]],
+        choice4: [this.DataEdit.Answers[3].answer, [Validators.required]],
+        correct: [correctchoice + '', [Validators.required]]
+      });
+    }else{
+        this.FormAddQuestion = this.build.group({
+          question: [this.DataEdit.question, [Validators.required]],
+          type: this.DataEdit.typefile ? this.DataEdit.typefile : 'NO',
+          link: this.DataEdit.img,
+          choice1: [this.DataEdit.Answers[0].answer, [Validators.required]],
+          choice2: [this.DataEdit.Answers[1].answer, [Validators.required]],
+          choice3: [this.DataEdit.Answers[2].answer, [Validators.required]],
+          choice4: [this.DataEdit.Answers[3].answer, [Validators.required]],
+          correct: [correctchoice + '', [Validators.required]]
+        });
+    }
     this.AddQuestion = false;
     this.EdisQuestion = true;
   }
   OnsubmitEdit() {
     if(this.FormAddQuestion.valid){
+      if(this.FormAddQuestion.controls['type'].value == 'LI'){
+        let url =  this.FormAddQuestion.controls['link'].value.split('/');
+        this.imageBase64 = 'https://www.youtube.com/embed/' + url[url.length-1]
+      }
       let obj = {
         code_id: this.Data.code_id,
         img: this.imageBase64?this.imageBase64:'',
+        typefile: this.FormAddQuestion.controls['type'].value,
         user_id: this.User.user_id,
         question_id: this.DataEdit.q_id,
         question: this.FormAddQuestion.controls['question'].value,

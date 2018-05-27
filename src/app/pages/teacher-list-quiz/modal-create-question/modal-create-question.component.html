@@ -20,7 +20,10 @@
                 <div class="col-md-12">
                   <div class="question">
                     <h4>{{i+1}} : {{DataQuizs.question}}</h4>
-                    <img *ngIf="DataQuizs.img" [src]="baseUrlimg2 +'/'+ DataQuizs.img" alt="" width="100%">
+                    <div class="text-center">
+                      <img *ngIf="DataQuizs.img && DataQuizs.typefile == 'IM'" [src]="baseUrlimg2 +'/'+ DataQuizs.img" alt="" width="100%">
+                      <iframe *ngIf="DataQuizs.img && DataQuizs.typefile == 'LI'" width="420" height="345" [src]="DataQuizs.img | url"></iframe>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -69,15 +72,29 @@
           </div>
           <div class="col-md-6" *ngIf="AddQuestion">
             <h2>Add Question</h2>
-            <div style="position: relative;">
-              <img *ngIf="!imageShow" src="assets/img/image.png" alt="" width="100%">
-              <img *ngIf="imageShow" src="{{imageShow}}" alt="" width="100%">
-              <div class="center">
-                <label for="file-img" class="btn-bowser">bowser</label>
-                <input type="file" name="" id="file-img" style="display:none;" (change)="onFileChange($event)" accept="image/*">
-              </div>
-            </div>
             <form [formGroup]="FormAddQuestion" (submit)="Onsubmit()">
+              <input type="radio" name="type" value="NO" formControlName="type"> Normal
+              <input type="radio" name="type" value="IM" formControlName="type"> Image/gif
+              <input type="radio" name="type" value="LI" formControlName="type"> Link youtube
+              <hr>
+              <div style="position: relative;" *ngIf="FormAddQuestion.value.type == 'IM'">
+                <img *ngIf="!imageShow" src="assets/img/image.png" alt="" width="100%">
+                <img *ngIf="imageShow" src="{{imageShow}}" alt="" width="100%">
+                <div class="center">
+                  <label for="file-img" class="btn-bowser">bowser</label>
+                  <input type="file" name="" id="file-img" style="display:none;" (change)="onFileChange($event)" accept="image/*">
+                </div>
+              </div>
+              <div *ngIf="FormAddQuestion.value.type == 'LI'">
+                <div class="form-group">
+                  <label>{{'Link video youtube'|lang}}:</label>
+                  <input type="text" class="form-control" placeholder="link" formControlName="link">
+                  <validation [control]="FormAddQuestion.controls['link']"></validation>
+                </div>
+                <div class="text-center">
+                    <img src="assets\img\copylink.png" width="80%">
+                  </div>
+              </div>
               <div class="form-group">
                 <label>{{'Question'|lang}}:</label>
                 <textarea type="text" class="form-control" row="4" placeholder="{{'Your question'|lang}}" formControlName="question"></textarea>
@@ -146,8 +163,13 @@
             </form>
           </div>
           <div class="col-md-6" *ngIf="EdisQuestion">
-            <h2>Edit Question</h2>
-            <div style="position: relative;" *ngIf="DataEdit">
+            <form [formGroup]="FormAddQuestion" (submit)="OnsubmitEdit()">
+              <h2>Edit Question</h2>
+              <input type="radio" name="type" value="NO" formControlName="type"> Normal
+              <input type="radio" name="type" value="IM" formControlName="type"> Image/gif
+              <input type="radio" name="type" value="LI" formControlName="type"> Link youtube
+              <hr>
+              <div style="position: relative;" *ngIf="DataEdit && FormAddQuestion.value.type == 'IM'">
                 <img *ngIf="!DataEdit.img&&!imageShow" src="assets/img/image.png" alt="" width="100%">
                 <img *ngIf="DataEdit.img&&!imageShow" [src]="baseUrlimg2 +'/'+DataEdit.img" alt="" width="100%">
                 <img *ngIf="imageShow" src="{{imageShow}}" alt="" width="100%">
@@ -156,7 +178,16 @@
                   <input type="file" name="" id="file-img2" style="display:none;" (change)="onFileChange($event)" accept="image/*">
                 </div>
               </div>
-            <form [formGroup]="FormAddQuestion" (submit)="OnsubmitEdit()">
+              <div *ngIf="FormAddQuestion.value.type == 'LI'">
+                <div class="form-group">
+                  <label>{{'Link video youtube'|lang}}:</label>
+                  <input type="text" class="form-control" placeholder="link" formControlName="link">
+                  <validation [control]="FormAddQuestion.controls['link']"></validation>
+                </div>
+                <div class="text-center">
+                  <img src="assets\img\copylink.png" width="80%">
+                </div>
+              </div>
               <div class="form-group">
                 <label>{{'Question'|lang}}:</label>
                 <textarea type="text" class="form-control" row="4" placeholder="{{'Your question'|lang}}" formControlName="question"></textarea>

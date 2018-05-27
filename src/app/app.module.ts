@@ -1,3 +1,4 @@
+import { StringUrlPipe } from './pipes/string-url.pipe';
 import { ChangePasswordComponent } from './pages/student-setting/change-password/change-password.component';
 import { DatePipe } from '@angular/common';
 import { ReportComponent } from './pages/teacher-list-quiz/report/report.component';
@@ -59,6 +60,7 @@ import { TeacherSettingComponent } from './pages/teacher-setting/teacher-setting
 @NgModule({
   declarations: [
     LanguagePipe,
+    StringUrlPipe,
     //Directive
     ValidationDirective,
     //components
